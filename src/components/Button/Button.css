@@ -1,0 +1,27 @@
+/* src/components/Button/Button.css */
+.custom-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.primary {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.primary:hover {
+  background-color: #fa5252;
+}
+
+.secondary {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.secondary:hover {
+  background-color: #e0e0e0;
+}
