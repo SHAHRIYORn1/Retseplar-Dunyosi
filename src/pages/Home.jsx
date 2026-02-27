@@ -1,3 +1,4 @@
+// src/pages/Home.jsx
 import React from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Hero from "../components/Hero/Hero";
@@ -34,18 +35,31 @@ const Home = () => {
   ];
 
   return (
-    <div className="page-container">
+    <div
+      className="page-container"
+      style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+    >
       <Navbar />
       <Hero />
-      <main style={{ padding: "40px 20px" }}>
-        <h2 style={{ textAlign: "center", marginBottom: "30px" }}>
+      <main
+        style={{ padding: "40px 20px", flex: 1, backgroundColor: "#f9f9f9" }}
+      >
+        <h2
+          style={{
+            textAlign: "center",
+            marginBottom: "40px",
+            fontSize: "2rem",
+            color: "#333",
+          }}
+        >
           Eng ommabop retseptlar
         </h2>
+
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
-            gap: "25px",
+            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+            gap: "30px",
             maxWidth: "1200px",
             margin: "0 auto",
           }}
