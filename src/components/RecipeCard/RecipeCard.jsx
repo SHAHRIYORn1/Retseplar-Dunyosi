@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../Button/Button";
 import "./RecipeCard.css";
 
 const RecipeCard = ({ title, description, imageUrl, time }) => {
@@ -10,7 +11,8 @@ const RecipeCard = ({ title, description, imageUrl, time }) => {
         <p className="recipe-description">{description}</p>
         <div className="recipe-footer">
           <span className="recipe-time">🕒 {time}</span>
-          <button className="view-btn">Ko'rish</button>
+
+          <Button variant="secondary">Ko'rish</Button>
         </div>
       </div>
     </div>
