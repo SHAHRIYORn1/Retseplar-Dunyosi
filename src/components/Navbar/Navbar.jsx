@@ -16,13 +16,13 @@ const Navbar = () => {
           </li>
           {/* Ochiladigan menyu qismi */}
           <li className="nav-item dropdown">
-            <a href="/kategoriyalar" className="dropdown-trigger">Retseplar</a>
-            <ul className="dropdown-menu">
-                <li><a href="/recipe-details">Milliy taomlar</a></li>
-              <li><a href="./recipe-details">Shirinliklar</a></li>
-              <li><a href="./recipe-details">Fast foodlar</a></li>
-              <li><a href="./recipe-details">Salatlar</a></li>
-            </ul>
+            <a href="/kategoriyalar" className="dropdown-trigger">Kategoriyalar <span className="arrow-icon">▼</span></a>
+          <ul className="dropdown-menu">
+              <li><a href="#">Milliy taomlar</a></li>
+              <li><a href="#">Fast foodlar</a></li>
+              <li><a href="#">Shirinliklar</a></li>
+              <li><a href="#">Salatlar</a></li>
+          </ul>
           </li>
           <li className="nav-item">
             <a href="/add-recipe">Qo'shish</a>

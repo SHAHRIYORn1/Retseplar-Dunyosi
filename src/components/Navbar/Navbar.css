@@ -1,10 +1,11 @@
-/* Ekranning chetlaridagi bo'shliqlarni yo'qotish */
+/* 1. Global reset - hamma brauzerlardagi standart bo'shliqlarni olib tashlaydi */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box; /* Kenglik hisoblanganda paddingni ichiga oladi */
 }
 
+/* 2. Navbar asosiy konteyneri */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -14,11 +15,12 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
-  left: 0;           /* Chap tomondan yopishish */
-  width: 100%;        /* To'liq kenglik */
-  z-index: 1000;
+  left: 0;
+  width: 100%;       /* Navbarni butun ekran bo'ylab yoyadi */
+  z-index: 1000;     /* Boshqa elementlardan ustun turishi uchun */
 }
 
+/* 3. Logo va Brend qismi */
 .logo-container {
   display: flex;
   align-items: center;
@@ -35,6 +37,7 @@
   color: #333;
 }
 
+/* 4. Menyu ro'yxati */
 .nav-list {
   display: flex;
   gap: 25px;
@@ -48,43 +51,64 @@
   color: #555;
   font-weight: 500;
   transition: color 0.3s;
+  display: flex;
+  align-items: center;
 }
 
 .nav-item a:hover {
   color: #ff6b6b;
 }
 
-/* --- DROPDOWN (Ochiladigan menyu) STILI --- */
+/* 5. DROPDOWN (Ochiladigan menyu) */
 .dropdown {
-  position: relative;
+  position: relative; /* Ichki menyu bunga qarab joylashadi */
 }
 
 .dropdown-menu {
-  display: none;      /* Dastlab yashirin */
+  display: none;      /* Dastlab ko'rinmaydi */
   position: absolute;
-  top: 100%;
+  top: 100%;          /* Navbardan pastda chiqishi uchun */
   left: 0;
   background-color: white;
   min-width: 180px;
   box-shadow: 0 8px 16px rgba(0,0,0,0.1);
   list-style: none;
   padding: 10px 0;
-  border-radius: 4px;
-  z-index: 10;
+  border-radius: 8px;
+  z-index: 100;
 }
 
 .dropdown-menu li a {
   padding: 10px 20px;
   display: block;
   font-size: 14px;
+  color: #333;
 }
 
+.dropdown-menu li a:hover {
+  background-color: #f9f9f9;
+  color: #ff6b6b;
+}
+
+/* Sichqoncha kelganda menyuni ko'rsatish */
 .dropdown:hover .dropdown-menu {
-  display: block;     /* Sichqoncha kelganda ko'rsatish */
+  display: block;
 }
 
-/* ----------------------------------------- */
+/* 6. IKONKA ANIMATSIYASI (Strelka) */
+.arrow-icon {
+  margin-left: 6px;
+  font-size: 12px;
+  transition: transform 0.4s ease; /* Aylanish silliqligi */
+  display: inline-block;
+}
 
+/* Sichqoncha kelganda ikonkani 180 gradusga aylantirish */
+.dropdown:hover .arrow-icon {
+  transform: rotate(180deg);
+}
+
+/* 7. Kirish tugmasi */
 .login-btn {
   padding: 8px 18px;
   background-color: #ff6b6b;
@@ -93,4 +117,10 @@
   border-radius: 20px;
   cursor: pointer;
   font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #e55a5a;
+  transform: translateY(-2px);
 }
