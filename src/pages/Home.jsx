@@ -7,6 +7,7 @@ import Footer from "../components/Footer/Footer";
 
 import oshImage from "../assets/osh.jpg";
 import shashlikImage from "../assets/shashlik.jpg";
+import somsaImage from "../assets/somsa.png";
 
 const Home = () => {
   const recipes = [
@@ -24,6 +25,13 @@ const Home = () => {
       imageUrl: shashlikImage,
       time: "30 daqiqa",
     },
+    {
+      id: 3,
+      title: "Somsa",
+      description: "Xamir ichida go'sht va piyoz bilan to'ldirilgan somsa.",
+      imageUrl: somsaImage,
+      time: "45 daqiqa",
+    }
   ];
 
   return (
