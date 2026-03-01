@@ -1,77 +1,100 @@
-// src/pages/RecipeDetail.jsx
 import React from "react";
 import { useParams } from "react-router-dom";
-import "./RecipeDetail.css"; 
+import styles from "./RecipeDetail.module.css";
+
 import oshImg from "../assets/osh.jpg";
 import shashlik from "../assets/shashlik.jpg";
-import somsa from "../assets/somsa.png";
+import somsaImg from "../assets/somsa.png";
+
 const RecipeDetail = () => {
   const { id } = useParams();
 
-  // 1. Ma'lumotlar bazasi (ID'lar mos kelishi kerak)
   const recipes = {
-    "1": { // Id 1 bo'lsa
-      title: "Toshkent Palovi",
-      description: "Mazali, to'yimli va haqiqiy o'zbekcha palov retsepti.",
+    "1": {
+      title: "Osh",
+      description: "Toshkent oshining an’anaviy retsepti. Guruch, mol go‘shti, sabzi va piyozdan tayyorlanadi.",
       image: oshImg,
-      time: "120 daqiqa",
-      servings: "6 portsiya",
-      difficulty: "O'rtacha",
-      ingredients: ["1 kg guruch", "1 kg go'sht", "1 kg sabzi"],
-      steps: ["Go'shtni to'g'rang", "Sabzini qovuring", "Guruchni soling"]
+      time: "1 soat",
+      servings: "2",
+      difficulty: "O‘rtacha",
+      ingredients: ["Guruch – 2 stakan", "Mol go‘shti – 300–400 gr", "Sabzi – 2–3 ta", "Piyoz – 1 ta", "Sariyog‘ – 100 gr", "Ziravorlar – ta’bga ko‘ra"],
+      steps: ["Go‘shtni qovurish: Yog‘da go‘shtni qizarguncha qovuring.", "Piyoz va sabzi qo‘shish: Piyoz va sabzini maydalab, go‘shtga qo‘shib, yumshaguncha qovuring.", "Guruchni qo‘shish: Guruchni yuving, aralashmaga qo‘shing. Tuz va ziravorlarni soling.", "Suv qo‘shish: Guruchni to‘liq qoplaydigan darajada suv qo‘shing. Qaynatib, so‘ng olovni kamaytiring va dimlab pishiring.","Sarimsoq va tuxum qo‘shish: Dimlaganing oxirida sarimsoqni qo‘shing va tuxum bilan bezang."]
     },
-    "2": { // Id 2 bo'lsa
-      title: "Qiyma Shashlik",
-      description: "Ochiq olovda pishgan mazali qiyma shashlik.",
+    "2": {
+      title: "Shashlik",
+      description: "O‘zbekistonning mazali shashlik retsepti. Go‘sht, sabzi va ziravorlardan tayyorlanadi.",
       image: shashlik,
-      time: "30 daqiqa",
-      servings: "4 portsiya",
+      time: "40 daqiqa",
+      servings: "4",
       difficulty: "Oddiy",
-      ingredients: ["1 kg go'sht", "Piyoz", "Ziravorlar"],
-      steps: ["Go'shtni qiymadan o'tkazing", "Ziravorlar soling"]
+      ingredients: ["Go‘sht – 500 gr", "Ziravorlar – ta’bga ko‘ra", "Sariyog‘ – 50 gr", "Tuz – ta’bga ko‘ra"],
+      steps: ["Go‘shtni qovurish: Yog‘da go‘shtni qizarguncha qovuring.", "Sabzi va ziravorlarni tayyorlash: Sabzini maydalab, ziravorlarni aralashtiring.", "Shashlik tayyorlash: Go‘sht va sabzini aralashtirib, shashlik tayyorlang.", "Qovurish: Shashlikni yog‘da qovuring."]
+    },
+    "3": {
+      title: "Somsa",
+      description: "O‘zbekistonning an’anaviy somsa retsepti. Un, go‘sht va sabzidan tayyorlanadi.",
+      image: somsaImg,
+      time: "1 soat",
+      servings: "6",
+      difficulty: "O‘rtacha",
+      ingredients: ["Un – 500 gr", "Go‘sht – 300 gr", "Sabzi – 2 ta", "Piyoz – 1 ta", "Sariyog‘ – 100 gr", "Tuz va ziravorlar – ta’bga ko‘ra"],
+      steps: ["Xamir tayyorlash: Un, suv, tuz va yog‘ni aralashtirib, yumshoq xamir tayyorlang.", "Go‘sht va sabzini tayyorlash: Go‘shtni mayda to‘g‘rab, sabzini maydalab, piyoz bilan aralashtiring. Tuz va ziravorlarni qo‘shing.", "Somsalarni shakllantirish: Xamirni bo‘laklarga bo‘ling, har bir bo‘lakni yoyib, go‘shtli aralashmani joylashtiring va somsa shaklida yoping.", "Pishirish: Somsalarni yog‘da qovuring yoki pechda pishiring."]
     }
-    // Id 3 uchun somsa...
   };
 
   const recipe = recipes[id];
 
   if (!recipe) {
-    return <h1 style={{textAlign: "center", marginTop: "50px"}}>Taom topilmadi</h1>;
+    return <h1 className={styles.notFound}>Taom topilmadi</h1>;
   }
 
-  // 2. Dizayn komponentlari (Zira.uz rejasi asosida)
   return (
-    <div className="recipe-detail-container">
-      {/* Sarlavha  */}
-      <div className="detail-header">
+    <div className={styles.recipeDetailContainer}>
+
+      {/* HEADER */}
+      <div className={styles.detailHeader}>
         <h1>{recipe.title}</h1>
-        <p className="description">{recipe.description}</p>
+        <p className={styles.description}>{recipe.description}</p>
       </div>
 
-      {/* Rasm va umumiy ma'lumotlar [cite: 3, 5, 6] */}
-      <div className="detail-info-grid">
-        <img src={recipe.image} alt={recipe.title} className="main-image" />
-        
-        <div className="meta-box">
-          <p>🕒 Tayyorlash vaqti: {recipe.time}</p>
-          <p>🍽️ Portsiya: {recipe.servings}</p>
-          <p>🧑‍🍳 Qiyinchilik: {recipe.difficulty}</p>
+      {/* IMAGE + META */}
+      <div className={styles.detailInfoGrid}>
+        <img
+          src={recipe.image}
+          alt={recipe.title}
+          className={styles.mainImage}
+        />
+
+        <div className={styles.metaBox}>
+          <p>🕒 {recipe.time}</p>
+          <p>🍽 {recipe.servings} porsiya</p>
+          <p>👨‍🍳 {recipe.difficulty}</p>
         </div>
       </div>
 
-      {/* Masalliqlar qismi [cite: 6] */}
-      <div className="info-box">
+      {/* INGREDIENTS */}
+      <div className={styles.infoBox}>
         <h2>Masalliqlar:</h2>
         <ul>
-          {recipe.ingredients.map((item, index) => <li key={index}>{item}</li>)}
+          {recipe.ingredients.map((item, index) => (
+            <li key={index}>
+              <input type="checkbox" /> {item}
+            </li>
+          ))}
         </ul>
       </div>
 
-      {/* Tayyorlanishi [cite: 6] */}
-      <div className="info-box">
+      {/* STEPS */}
+      <div className={styles.infoBox}>
         <h2>Tayyorlanishi:</h2>
-        {recipe.steps.map((step, index) => <p key={index}>{index + 1}. {step}</p>)}
+        {recipe.steps.map((step, index) => (
+          <p key={index}>
+            <span className={styles.stepNumber}>{index + 1}</span>
+            {step}
+          </p>
+        ))}
       </div>
+
     </div>
   );
 };
