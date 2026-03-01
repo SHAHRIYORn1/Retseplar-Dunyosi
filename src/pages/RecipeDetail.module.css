@@ -1,124 +1,515 @@
+/* =====================
+   VARIABLES & RESET
+   ===================== */
+:root {
+  --primary-color: #ff6b5b;
+  --primary-dark: #e85a4a;
+  --secondary-color: #f5ede0;
+  --accent-warm: #d6b98c;
+  --text-dark: #1a1a1a;
+  --text-light: #777;
+  --text-lighter: #999;
+  --bg-light: #f9f7f4;
+  --white: #ffffff;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.12);
+  --border-radius: 12px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =====================
+   CONTAINER & LAYOUT
+   ===================== */
 .recipeDetailContainer {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px;
-  font-family: "Segoe UI", sans-serif;
-  background: #f7f7f7;
+  padding: 60px 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, var(--bg-light) 0%, var(--white) 100%);
+  min-height: 100vh;
 }
 
 .notFound {
   text-align: center;
-  margin-top: 100px;
+  margin-top: 120px;
+  font-size: 28px;
+  color: var(--text-dark);
+  font-weight: 600;
+  animation: fadeIn 0.5s ease-in;
 }
 
-/* Header */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =====================
+   HEADER SECTION
+   ===================== */
 .detailHeader {
-  margin-bottom: 30px;
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 2px solid var(--primary-color);
+  animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .detailHeader h1 {
-  font-size: 40px;
-  font-weight: 700;
-  color: #1e1e1e;
-  line-height: 1.3;
-  margin-bottom: 10px;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 800;
+  color: var(--text-dark);
+  line-height: 1.2;
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
 }
 
 .description {
   font-size: 18px;
-  color: #666;
+  color: var(--text-light);
+  line-height: 1.7;
+  max-width: 700px;
+  font-weight: 400;
 }
 
-/* Image + Meta */
+/* =====================
+   IMAGE & META GRID
+   ===================== */
 .detailInfoGrid {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 30px;
-  margin-bottom: 40px;
+  gap: 40px;
+  margin-bottom: 50px;
+  align-items: start;
 }
 
 .mainImage {
   width: 100%;
-  height: 420px;
+  height: 500px;
   object-fit: cover;
-  /* border-radius: 14px; */
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.mainImage:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
 }
 
 .metaBox {
-  background: #f0eadf;
-  padding: 25px;
-  /* border-radius: 14px; */
+  background: linear-gradient(135deg, var(--secondary-color) 0%, #faf5ed 100%);
+  padding: 40px 30px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  font-size: 16px;
+  gap: 0;
+  position: sticky;
+  top: 20px;
+  transition: var(--transition);
+}
+
+.metaBox:hover {
+  box-shadow: var(--shadow-lg);
 }
 
 .metaBox p {
-  margin: 25px;
+  margin: 0;
+  padding: 20px 0;
   display: flex;
   align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-dark);
+  border-bottom: 1px solid rgba(214, 185, 140, 0.3);
+  transition: var(--transition);
 }
 
-/* Info Boxes */
+.metaBox p:last-child {
+  border-bottom: none;
+}
+
+.metaBox p:hover {
+  color: var(--primary-color);
+  transform: translateX(8px);
+}
+
+/* =====================
+   INFO BOXES
+   ===================== */
 .infoBox {
-  background: white;
-  padding: 30px;
-  /* border-radius: 14px; */
-  margin-bottom: 30px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  background: var(--white);
+  padding: 45px;
+  border-radius: var(--border-radius);
+  margin-bottom: 40px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  border-left: 4px solid transparent;
+}
+
+.infoBox:hover {
+  box-shadow: var(--shadow-lg);
+  border-left-color: var(--primary-color);
 }
 
 .infoBox h2 {
-  margin-bottom: 20px;
-  font-size: 22px;
-  border-left: 4px solid #d6b98c;
-  padding-left: 10px;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  padding-left: 0;
+  border-left: none;
 }
 
+.infoBox h2::before {
+  content: "";
+  width: 6px;
+  height: 24px;
+  background: linear-gradient(180deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  border-radius: 3px;
+}
+
+/* =====================
+   INGREDIENTS LIST
+   ===================== */
 .infoBox ul {
   list-style: none;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .infoBox li {
-  margin-bottom: 12px;
+  padding: 16px 0;
   font-size: 16px;
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  color: var(--text-dark);
+  transition: var(--transition);
 }
 
+.infoBox li:last-child {
+  border-bottom: none;
+}
+
+.infoBox li:hover {
+  background: rgba(214, 185, 140, 0.08);
+  padding-left: 8px;
+}
+
+.infoBox li input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+  flex-shrink: 0;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.infoBox li input[type="checkbox"]:hover {
+  transform: scale(1.1);
+}
+
+.infoBox li input[type="checkbox"]:checked {
+  background: var(--primary-color);
+}
+
+/* =====================
+   STEPS SECTION
+   ===================== */
 .infoBox p {
-  margin-bottom: 15px;
+  margin: 0;
+  padding: 20px 0;
   display: flex;
-  gap: 15px;
+  gap: 16px;
   align-items: flex-start;
-  line-height: 1.6;
+  line-height: 1.8;
+  color: var(--text-dark);
+  font-size: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+}
+
+.infoBox p:last-of-type {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.infoBox p:hover {
+  background: rgba(214, 185, 140, 0.05);
+  padding-left: 8px;
 }
 
 .stepNumber {
-  background: #d6b98c;
-  color: white;
-  width: 28px;
-  height: 28px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 700;
   flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
 }
 
-/* Responsive */
+.infoBox p:hover .stepNumber {
+  transform: scale(1.15) rotateZ(10deg);
+  box-shadow: 0 5px 15px rgba(214, 185, 140, 0.4);
+}
+
+/* =====================
+   RESPONSIVE DESIGN
+   ===================== */
+@media (max-width: 1024px) {
+  .recipeDetailContainer {
+    padding: 40px 16px;
+  }
+
+  .detailInfoGrid {
+    gap: 30px;
+  }
+
+  .infoBox {
+    padding: 35px;
+  }
+}
+
 @media (max-width: 768px) {
   .detailInfoGrid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
 
   .mainImage {
-    height: 300px;
+    height: 350px;
   }
+
+  .metaBox {
+    position: static;
+    padding: 30px 20px;
+  }
+
+  .infoBox {
+    padding: 25px;
+  }
+
+  .infoBox h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .detailHeader h1 {
+    font-size: 32px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .infoBox li,
+  .infoBox p {
+    padding: 14px 0;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .recipeDetailContainer {
+    padding: 24px 12px;
+  }
+
+  .detailHeader {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+  }
+
+  .detailHeader h1 {
+    font-size: 24px;
+  }
+
+  .mainImage {
+    height: 250px;
+  }
+
+  .metaBox {
+    padding: 20px 16px;
+  }
+
+  .metaBox p {
+    padding: 14px 0;
+    font-size: 14px;
+  }
+
+  .infoBox {
+    padding: 20px;
+    margin-bottom: 25px;
+  }
+
+  .infoBox h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .infoBox li,
+  .infoBox p {
+    padding: 12px 0;
+    font-size: 14px;
+    gap: 10px;
+  }
+
+  .stepNumber {
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+}
+
+/* =====================
+   DARK MODE SUPPORT
+   ===================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-dark: #ffffff;
+    --text-light: #e0d5c8;
+    --bg-light: #2d2420;
+    --white: #3a302a;
+  }
+
+  .recipeDetailContainer {
+    background: linear-gradient(135deg, #2d2420 0%, #3a302a 100%);
+  }
+
+  .detailHeader {
+    border-bottom-color: rgba(255, 107, 91, 0.5);
+  }
+
+  .detailHeader h1 {
+    color: #ffffff;
+  }
+
+  .description {
+    color: #e0d5c8;
+  }
+
+  .mainImage {
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+  }
+
+  .mainImage:hover {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  .metaBox {
+    background: linear-gradient(135deg, #4a4038 0%, #3f3530 100%);
+  }
+
+  .metaBox p {
+    border-bottom-color: rgba(214, 185, 140, 0.2);
+    color: #ffffff;
+  }
+
+  .metaBox p:hover {
+    color: var(--primary-color);
+  }
+
+  .infoBox {
+    background: #3a302a;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+
+  .infoBox:hover {
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+    border-left-color: var(--primary-color);
+  }
+
+  .infoBox h2 {
+    color: #ffffff;
+  }
+
+  .infoBox h2::before {
+    background: linear-gradient(180deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  }
+
+  .infoBox li {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+  }
+
+  .infoBox li:hover {
+    background: rgba(214, 185, 140, 0.1);
+  }
+
+  .infoBox li input[type="checkbox"] {
+    background: #4a3f37;
+    border-color: #5a4f47;
+  }
+
+  .infoBox p {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+  }
+
+  .infoBox p:hover {
+    background: rgba(214, 185, 140, 0.08);
+  }
+
+  .infoBox p:hover .stepNumber {
+    box-shadow: 0 5px 15px rgba(255, 107, 91, 0.4);
+  }
+
+  .notFound {
+    color: #ffffff;
+  }
+}
+
+/* =====================
+   ACCESSIBILITY
+   ===================== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+input[type="checkbox"]:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
 }
