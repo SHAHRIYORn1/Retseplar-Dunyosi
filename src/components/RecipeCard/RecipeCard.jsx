@@ -1,17 +1,15 @@
-import React, { useState } from "react"; // useState qo'shildi
+// src/components/RecipeCard/RecipeCard.jsx
+import React from "react";
+import { Link } from "react-router-dom"; // Link'ni import qilamiz
 import Button from "../Button/Button";
 import "./RecipeCard.css";
 import LoveIcon from "../../assets/love-icon.png";
+import { useFavorites } from "../../context/FavoritesContext";
 
-const RecipeCard = ({ title, description, imageUrl, time }) => {
-  // Like holatini saqlash uchun state
-  const [isLiked, setIsLiked] = useState(false);
-
-  // Bosilganda holatni teskarisiga o'zgartirish
-  const handleLike = () => {
-    setIsLiked(!isLiked);
-  };
-
+// props'ga 'id' qo'shdik
+const RecipeCard = ({ id, title, description, imageUrl, time }) => { 
+  const { toggleFavorite } = useFavorites();
+  
   return (
     <div className="recipe-card">
       <img src={imageUrl} alt={title} className="recipe-image" />
@@ -22,12 +20,16 @@ const RecipeCard = ({ title, description, imageUrl, time }) => {
           <span className="recipe-time">🕒 {time}</span>
           <div className="card-buttons-footer">
             <button 
-              className={`love-btn ${isLiked ? "active-like" : ""}`} 
-              onClick={handleLike}
+              className="love-btn" 
+              onClick={() => toggleFavorite({ title, description, imageUrl, time })}
             >
-              <img src={LoveIcon} alt="Love icon" className="love-icon" />
-            </button>
-            <Button variant="secondary">Ko'rish</Button>
+              <img src={LoveIcon} alt="Love icon" className="love-icon"/>
+            </button>   
+            
+            {/* LINK YO'LI: ID bo'yicha dinamik yo'naltirish */}
+            <Link to={`/recipe/${id}`} style={{ textDecoration: 'none' }}>
+                <Button variant="secondary">Ko'rish</Button>
+            </Link>
           </div>
         </div>
       </div>
