@@ -24,6 +24,7 @@ const Navbar = () => {
               <li><a href="#">Salatlar</a></li>
           </ul>
           </li>
+          <li className="nav-item"><a href="#">Favorites</a></li>
           <li className="nav-item">
             <a href="/add-recipe">Qo'shish</a>
           </li>

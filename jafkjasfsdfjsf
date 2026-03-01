@@ -1,0 +1,117 @@
+[33mcommit 953604d345612612f8695a96bd14e5469e865cda[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Merge: 46acb2e e5a218e
+Author: SHAHRIYORn1 <akountdls89@gmail.com>
+Date:   Sat Feb 28 17:41:12 2026 +0500
+
+    Merge pull request #5 from SHAHRIYORn1/azizbek-dev
+    
+    Azizbek dev
+
+[33mcommit e5a218eb081bb87e38e9595ffc867246d37a030c[m
+Merge: 2dd3dce 7725c7a
+Author: Azizbek Abdullayev <azizbekabdullayev3400@gmail.com>
+Date:   Sat Feb 28 14:10:01 2026 +0500
+
+    Merge remote-tracking branch 'origin/shahriyor-dev' into azizbek-devMerge remote-tracking branch 'origin/shahriyor-dev' into azizbek-dev
+
+[33mcommit 7725c7a6432d9693b7e44428c7c5b2bfb7d2192a[m
+Author: SHAHRIYORn1 <akountdls89@gmail.com>
+Date:   Sat Feb 28 08:30:23 2026 +0500
+
+    navbarni yana yangiladim
+
+[33mcommit 882bed17539c88a8ca4a19c652da3fb4d961bf69[m
+Author: SHAHRIYORn1 <akountdls89@gmail.com>
+Date:   Sat Feb 28 08:15:58 2026 +0500
+
+    navbardagi retseplar dropwond qilindi
+
+[33mcommit 46acb2e0ab70b153aabcf23a280ed0f3a04cd4db[m
+Merge: e79f42a 2dd3dce
+Author: SHAHRIYORn1 <akountdls89@gmail.com>
+Date:   Sat Feb 28 07:47:36 2026 +0500
+
+    Merge pull request #4 from SHAHRIYORn1/azizbek-dev
+    
+    Merge request..
+
+[33mcommit e79f42af88b71f50a0088e4110ac4687059e90f5[m
+Merge: c09aaf6 a3ba14a
+Author: SHAHRIYORn1 <akountdls89@gmail.com>
+Date:   Fri Feb 27 22:51:11 2026 +0500
+
+    Merge pull request #3 from SHAHRIYORn1/shahriyor-dev
+    
+    local change
+
+[33mcommit c4c695e30e19179737926bd5fd6b60c100030c0e[m
+Author: Azizbek Abdullayev <azizbekabdullayev3400@gmail.com>
+Date:   Fri Feb 27 22:13:07 2026 +0500
+
+    Button komponenti yaratildi va RecipeCard'ga qo'shildi
+
+[33mcommit 881fa8eaf00bc48cd2f415c3fd180d2fda052d22[m
+Author: Azizbek Abdullayev <azizbekabdullayev3400@gmail.com>
+Date:   Fri Feb 27 22:05:06 2026 +0500
+
+    Added some changes..
+
+[33mcommit a1a243af7c9160714c4d7601b52f85a14383d02c[m
+Author: SHAHRIYORn1 <akountdls89@gmail.com>
+Date:   Fri Feb 27 22:39:59 2026 +0500
+
+    1ta toam qoshildi
+
+[33mcommit 2dd3dce113a2723df08349b776b9e91c331e1449[m[33m ([m[1;31morigin/azizbek-dev[m[33m)[m
+Author: Azizbek Abdullayev <azizbekabdullayev3400@gmail.com>
+Date:   Fri Feb 27 22:13:07 2026 +0500
+
+    Button komponenti yaratildi va RecipeCard'ga qo'shildi
+
+[33mcommit a3ba14a4285ec6b13503eaf4e4920691343387c3[m
+Author: SHAHRIYORn1 <akountdls89@gmail.com>
+Date:   Fri Feb 27 22:01:05 2026 +0500
+
+    local change
+
+[33mcommit e79d026858da8925dc3f11165b2d6f6aea481e44[m
+Author: Azizbek Abdullayev <azizbekabdullayev3400@gmail.com>
+Date:   Fri Feb 27 22:05:06 2026 +0500
+
+    Added some changes..
+
+[33mcommit c09aaf605942d1bc89613304deb5db1370093eb9[m
+Merge: f8e4414 5e36c3e
+Author: SHAHRIYORn1 <akountdls89@gmail.com>
+Date:   Fri Feb 27 21:48:58 2026 +0500
+
+    Merge pull request #2 from SHAHRIYORn1/azizbek-dev
+    
+    Vizual komponentlar: Navbar, Hero, RecipeCard, Footer qo'shildi va lo…
+
+[33mcommit 5e36c3eb2724ff235185da8cea2b432f869c6171[m
+Author: Azizbek Abdullayev <azizbekabdullayev3400@gmail.com>
+Date:   Fri Feb 27 21:37:24 2026 +0500
+
+    Vizual komponentlar: Navbar, Hero, RecipeCard, Footer qo'shildi va logo pngga o'zgartirildi
+
+[33mcommit f8e4414fc6be6f57647433d08bf72c5f0d40884c[m
+Merge: 4fade14 0c0e468
+Author: Azizbek Abdullayev <azizbekabdullayev3400@gmail.com>
+Date:   Thu Feb 26 22:33:55 2026 +0500
+
+    Merge pull request #1 from SHAHRIYORn1/azizbek-dev
+    
+    Loyiha strukturasi yaratildi va Navbar qo'shildi..
+
+[33mcommit 0c0e468bae6529b35525144a3c437e6bfcec66db[m
+Author: Azizbek Abdullayev <azizbekabdullayev3400@gmail.com>
+Date:   Thu Feb 26 22:28:57 2026 +0500
+
+    Loyiha strukturasi yaratildi va Navbar qo'shildi
+
+[33mcommit 4fade145230d68345e42bfa63922d7fd6aa67a37[m
+Author: SHAHRIYORn1 <akountdls89@gmail.com>
+Date:   Wed Feb 25 17:56:31 2026 +0500
+
+    react project yaratildi

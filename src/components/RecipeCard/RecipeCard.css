@@ -71,3 +71,45 @@
 .view-btn:hover {
   background-color: #fa5252;
 }
+
+.card-buttons-footer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* ... oldingi kodingiz pastidan qo'shing ... */
+
+.love-btn {
+  background: none;
+  border: none;
+  padding: 5px; /* Icon atrofida joy qoldirish uchun */
+  cursor: pointer;
+  border-radius: 50%; /* Dumaloq qilish */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+/* Like bosilgandagi holat */
+.love-btn.active-like {
+  background-color: #ff4757; /* Qizil rang */
+  box-shadow: 0 0 10px rgba(255, 71, 87, 0.4);
+}
+
+/* Icon o'zi oq rangda bo'lsa yoki ko'rinishi uchun (ixtiyoriy) */
+.active-like .love-icon {
+  filter: brightness(0) invert(1); /* Qizil fonda iconni oq qilib ko'rsatadi */
+}
+
+.love-icon {
+  width: 25px; /* Kattaligini moslang */
+  height: 25px;
+  transition: transform 0.2s ease;
+}
+
+.love-btn:active .love-icon {
+  transform: scale(1.2); /* Bosilganda ozgina kattalashadi */
+}
