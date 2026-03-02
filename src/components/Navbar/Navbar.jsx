@@ -8,40 +8,26 @@ const Navbar = () => {
       <div className="logo-container">
         <img src="/logo.png" alt="Logo" className="logo-img" />
         <h1 className="brand-name">
-          <a href="/">Retseplar Dunyosi</a>
+          {/* Sahifa yangilanib ketmasligi uchun Link ishlatamiz */}
+          <Link target="_self" to="/">Retseplar Dunyosi</Link>
         </h1>
       </div>
 
       <nav className="nav-menu">
         <ul className="nav-list">
           <li className="nav-item">
-            <a href="/">Bosh sahifa</a>
+            <Link to="/">Bosh sahifa</Link>
           </li>
-          {/* Ochiladigan menyu qismi */}
-          <li className="nav-item dropdown">
-            <a href="/kategoriyalar" className="dropdown-trigger">
-              Kategoriyalar <span className="arrow-icon">▼</span>
-            </a>
-            <ul className="dropdown-menu">
-              <li>
-                <a href="#">Milliy taomlar</a>
-              </li>
-              <li>
-                <a href="#">Fast foodlar</a>
-              </li>
-              <li>
-                <a href="#">Shirinliklar</a>
-              </li>
-              <li>
-                <a href="#">Salatlar</a>
-              </li>
-            </ul>
-          </li>
+          
           <li className="nav-item">
-            <a href="#">Favorites</a>
-          </li>
+            <Link to="/all-recipes">Retseplar</Link>
+        </li>
           <li className="nav-item">
-            <a href="/add-recipe">Qo'shish</a>
+            <Link to="#">Favorites</Link>
+          </li>
+          
+          <li className="nav-item">
+            <Link to="#">Qo'shish</Link>
           </li>
         </ul>
       </nav>
