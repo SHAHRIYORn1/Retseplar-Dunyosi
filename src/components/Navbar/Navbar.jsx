@@ -7,7 +7,9 @@ const Navbar = () => {
     <header className="navbar">
       <div className="logo-container">
         <img src="/logo.png" alt="Logo" className="logo-img" />
-        <h1 className="brand-name">Retseplar Dunyosi</h1>
+        <h1 className="brand-name">
+          <a href="/">Retseplar Dunyosi</a>
+        </h1>
       </div>
 
       <nav className="nav-menu">
@@ -17,15 +19,27 @@ const Navbar = () => {
           </li>
           {/* Ochiladigan menyu qismi */}
           <li className="nav-item dropdown">
-            <a href="/kategoriyalar" className="dropdown-trigger">Kategoriyalar <span className="arrow-icon">▼</span></a>
-          <ul className="dropdown-menu">
-              <li><a href="#">Milliy taomlar</a></li>
-              <li><a href="#">Fast foodlar</a></li>
-              <li><a href="#">Shirinliklar</a></li>
-              <li><a href="#">Salatlar</a></li>
-          </ul>
+            <a href="/kategoriyalar" className="dropdown-trigger">
+              Kategoriyalar <span className="arrow-icon">▼</span>
+            </a>
+            <ul className="dropdown-menu">
+              <li>
+                <a href="#">Milliy taomlar</a>
+              </li>
+              <li>
+                <a href="#">Fast foodlar</a>
+              </li>
+              <li>
+                <a href="#">Shirinliklar</a>
+              </li>
+              <li>
+                <a href="#">Salatlar</a>
+              </li>
+            </ul>
           </li>
-          <li className="nav-item"><a href="#">Favorites</a></li>
+          <li className="nav-item">
+            <a href="#">Favorites</a>
+          </li>
           <li className="nav-item">
             <a href="/add-recipe">Qo'shish</a>
           </li>
@@ -34,9 +48,9 @@ const Navbar = () => {
 
       <div className="user-actions">
         <Link to="/login">
-    <button className="login-btn">Kirish</button>
+          <button className="login-btn">Kirish</button>
         </Link>
-    </div>
+      </div>
     </header>
   );
 };
