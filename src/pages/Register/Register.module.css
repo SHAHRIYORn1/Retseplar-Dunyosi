@@ -1,0 +1,74 @@
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5; /* Orqa fon rangi */
+}
+
+.loginForm {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.loginForm h2 {
+  margin-bottom: 30px;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.inputGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #555;
+  font-size: 14px;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s;
+  box-sizing: border-box; /* Padding hisobiga kengayib ketmasligi uchun */
+}
+
+.inputGroup input:focus {
+  border-color: #ff6b6b; /* Tugma rangiga mos */
+}
+
+.toggleText {
+  margin-top: 25px;
+  font-size: 14px;
+  color: #777;
+}
+
+.toggleText a {
+  color: #ff6b6b;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.toggleText a:hover {
+  text-decoration: underline;
+}
+
+/* Tugma (Button) komponentingiz markazda turishi uchun */
+.loginForm button {
+  width: 100%;
+  margin-top: 10px;
+}
