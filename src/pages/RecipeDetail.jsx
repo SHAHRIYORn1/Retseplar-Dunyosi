@@ -1,7 +1,7 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom"; // Link import qilindi
 import styles from "./RecipeDetail.module.css";
-import taomlar from "../toamlar.json"; 
+import taomlar from "../toamlar.json";
 
 const RecipeDetail = () => {
   const { id } = useParams();
@@ -10,7 +10,12 @@ const RecipeDetail = () => {
   const recipe = taomlar.find((item) => item.id === id);
 
   if (!recipe) {
-    return <h1 style={{ textAlign: "center", marginTop: "50px" }}>Taom topilmadi</h1>;
+    return (
+      <div className={styles.recipeDetailContainer}>
+        <h1 className={styles.notFound}>Taom topilmadi</h1>
+        <Link to="/" className={styles.backButton}>Bosh sahifaga qaytish</Link>
+      </div>
+    );
   }
 
   // Rasm yo'li
@@ -19,6 +24,11 @@ const RecipeDetail = () => {
   return (
     <div className={styles.recipeDetailContainer}>
       <div className={styles.detailHeader}>
+        {/* ORQAGA QAYTISH TUGMASI SHU YERDA */}
+        <Link to="/" className={styles.backButton}>
+          ← Bosh sahifa
+        </Link>
+        
         <h1>{recipe.title}</h1>
         <p className={styles.description}>{recipe.description}</p>
       </div>
@@ -37,7 +47,7 @@ const RecipeDetail = () => {
         <ul>
           {recipe.ingredients.map((item, index) => (
             <li key={index}>
-              <input type="checkbox" style={{ marginRight: "10px" }} /> 
+              <input type="checkbox" style={{ marginRight: "10px" }} />
               {item}
             </li>
           ))}

@@ -77,6 +77,30 @@
   }
 }
 
+/* BOSH SAHIFA TUGMASI USLUBLARI */
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: var(--white);
+  color: var(--primary-color);
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  border: 1px solid var(--primary-color);
+  transition: var(--transition);
+  font-size: 14px;
+}
+
+.backButton:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+  transform: translateX(-5px);
+  box-shadow: var(--shadow-sm);
+}
+
 .detailHeader h1 {
   font-size: clamp(32px, 5vw, 48px);
   font-weight: 800;
@@ -496,6 +520,18 @@
 
   .notFound {
     color: #ffffff;
+  }
+
+  /* Dark mode uchun tugma uslubi */
+  .backButton {
+    background-color: #4a4038;
+    border-color: #5a4f47;
+    color: #ffffff;
+  }
+
+  .backButton:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
   }
 }
 

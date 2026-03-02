@@ -6,12 +6,13 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import AllRetsep from "./pages/AllRetsep";
 import Favorites from "./pages/Favorites/Favorites";
-
+// import Navbar from "./components/Navbar/Navbar";
 import { FavoritesProvider } from "./context/FavoritesContext";
 
 function App() {
   return (
     <FavoritesProvider>
+      {/* <Navbar /> <--Navbar faqat shu yerda */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/recipe/:id" element={<RecipeDetail />} />

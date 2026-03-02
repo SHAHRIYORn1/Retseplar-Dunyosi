@@ -85,7 +85,7 @@
   color: #ff6b6b;
 }
 
-/* 5. User actions (Kirish tugmasi) */
+/* 5. User actions (Kirish/Avatar qismi) */
 .user-actions {
   display: flex;
   align-items: center;
@@ -97,6 +97,7 @@
   text-decoration: none;
 }
 
+/* Login tugmasi */
 .login-btn {
   padding: 8px 18px;
   background-color: #ff6b6b;
@@ -118,6 +119,49 @@
 .login-btn:active {
   transform: translateY(0);
 }
+
+/* --- YANGI QO'SHILGAN USLUBLAR (AVATAR VA LOGOUT) --- */
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #ff6b6b;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 18px;
+  text-transform: uppercase;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.logout-btn {
+  padding: 8px 16px;
+  background-color: transparent;
+  color: #ff6b6b;
+  border: 1px solid #ff6b6b;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.logout-btn:hover {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+/* -------------------------------------------------- */
 
 /* 6. HAMBURGER MENYU */
 .hamburger {
@@ -175,7 +219,7 @@
     font-size: 1.3rem;
   }
 
-  .login-btn {
+  .login-btn, .logout-btn {
     padding: 7px 15px;
     font-size: 0.9rem;
   }
@@ -263,19 +307,22 @@
   }
 
   /* User actions mobile */
-.user-actions {
+  .user-actions {
     display: none;
     width: 100%;
     padding: 1rem;
     position: absolute;
     top: auto;
-    bottom: -70px;
+    bottom: -80px; /* Joyni biroz oshirdik */
     left: 0;
     border-top: 1px solid #f0f0f0;
     justify-content: center;
+    background-color: white;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   }
 
-  /* Menyu ochilganda kirish tugmasi ko'rinadi */
+  /* Menyu ochilganda tugmalar ko'rinadi */
   .nav-menu.active + .user-actions {
     display: flex;
   }
@@ -284,7 +331,7 @@
     width: 100%;
   }
 
-  .login-btn {
+  .login-btn, .logout-btn {
     width: 100%;
     padding: 10px 15px;
     font-size: 0.9rem;
@@ -332,10 +379,10 @@
 
   .user-actions {
     padding: 0.75rem;
-    bottom: -60px;
+    bottom: -65px;
   }
 
-  .login-btn {
+  .login-btn, .logout-btn {
     padding: 8px 12px;
     font-size: 0.85rem;
   }
@@ -371,13 +418,13 @@
     font-size: 12px;
   }
 
-  .login-btn {
+  .login-btn, .logout-btn {
     padding: 6px 10px;
     font-size: 0.75rem;
   }
 
   .user-actions {
     padding: 0.5rem;
-    bottom: -55px;
+    bottom: -60px;
   }
 }

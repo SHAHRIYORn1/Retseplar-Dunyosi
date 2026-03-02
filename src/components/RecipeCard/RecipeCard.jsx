@@ -6,7 +6,11 @@ import LoveIcon from "../../assets/love-icon.png";
 import { useFavorites } from "../../context/useFavorites";
 
 const RecipeCard = ({ taom }) => {
-  const { toggleFavorite } = useFavorites();
+  // favorites ro'yxatini ham olamiz
+  const { toggleFavorite, favorites } = useFavorites();
+
+  // Taom sevimlilar ro'yxatida borligini tekshirish
+  const isFavorite = favorites.some((fav) => fav.id === taom?.id);
 
   let imageUrl = LoveIcon;
   if (taom && taom.imageName) {
@@ -20,7 +24,6 @@ const RecipeCard = ({ taom }) => {
 
   return (
     <div className="recipe-card">
-      {/* imageUrl bo'sh bo'lsa ham dastur xato bermaydi */}
       <img
         src={imageUrl}
         alt={taom?.title || "Taom"}
@@ -32,7 +35,11 @@ const RecipeCard = ({ taom }) => {
         <div className="recipe-footer">
           <span className="recipe-time">🕒 {taom?.time || "---"}</span>
           <div className="card-buttons-footer">
-            <button className="love-btn" onClick={() => toggleFavorite(taom)}>
+            {/* Dinamik klass qo'shildi: isFavorite bo'lsa active-like qo'shiladi */}
+            <button 
+              className={`love-btn ${isFavorite ? "active-like" : ""}`} 
+              onClick={() => toggleFavorite(taom)}
+            >
               <img src={LoveIcon} alt="Sevimlilar" className="love-icon" />
             </button>
 

@@ -1,9 +1,9 @@
 import React from "react";
-import Navbar from "../components/Navbar/Navbar";
 import Hero from "../components/Hero/Hero";
 import RecipeCard from "../components/RecipeCard/RecipeCard";
 import Footer from "../components/Footer/Footer";
 import taomlar from "../toamlar.json"; 
+import Navbar from "../components/Navbar/Navbar";
 
 const Home = () => {
   // Bu yerda aniq 4 ta elementni kesib olamiz
