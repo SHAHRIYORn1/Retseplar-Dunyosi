@@ -2,10 +2,9 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* Kenglik hisoblanganda paddingni ichiga oladi */
+  box-sizing: border-box;
 }
 
-/* 2. Navbar asosiy konteyneri */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -16,8 +15,8 @@
   position: sticky;
   top: 0;
   left: 0;
-  width: 100%;       /* Navbarni butun ekran bo'ylab yoyadi */
-  z-index: 1000;     /* Boshqa elementlardan ustun turishi uchun */
+  width: 100%; /* Navbarni butun ekran bo'ylab yoyadi */
+  z-index: 1000; /* Boshqa elementlardan ustun turishi uchun */
 }
 
 /* 3. Logo va Brend qismi */
@@ -35,6 +34,11 @@
   font-size: 1.5rem;
   margin: 0;
   color: #333;
+}
+
+.brand-name a {
+  color: black;
+  text-decoration: none;
 }
 
 /* 4. Menyu ro'yxati */
@@ -65,13 +69,13 @@
 }
 
 .dropdown-menu {
-  display: none;      /* Dastlab ko'rinmaydi */
+  display: none; /* Dastlab ko'rinmaydi */
   position: absolute;
-  top: 100%;          /* Navbardan pastda chiqishi uchun */
+  top: 100%; /* Navbardan pastda chiqishi uchun */
   left: 0;
   background-color: white;
   min-width: 180px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   list-style: none;
   padding: 10px 0;
   border-radius: 8px;
