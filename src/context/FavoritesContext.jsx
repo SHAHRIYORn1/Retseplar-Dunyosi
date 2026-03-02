@@ -39,5 +39,5 @@ export const FavoritesProvider = ({ children }) => {
   );
 };
 
-// 3. Hook'ni alohida eksport qilamiz
-export const useFavorites = () => useContext(FavoritesContext);
+// Hook'ni bu fayldan olib tashladik
+export default FavoritesContext;

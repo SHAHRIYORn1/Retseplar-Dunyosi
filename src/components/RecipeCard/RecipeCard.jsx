@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import "./RecipeCard.css";
 import LoveIcon from "../../assets/love-icon.png";
-import { useFavorites } from "../../context/FavoritesContext";
+import { useFavorites } from "../../context/useFavorites";
 
 const RecipeCard = ({ taom }) => {
   const { toggleFavorite } = useFavorites();
 
-  // XAVFSIZLIK: taom mavjudligini va imageName borligini tekshiramiz
-  let imageUrl = LoveIcon; // Default rasm
+  let imageUrl = LoveIcon;
   if (taom && taom.imageName) {
     try {
       imageUrl = new URL(`../../assets/${taom.imageName}`, import.meta.url)

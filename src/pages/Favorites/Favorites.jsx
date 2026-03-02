@@ -2,7 +2,7 @@
 import React from "react";
 import styles from "./Favorites.module.css";
 import RecipeCard from "../../components/RecipeCard/RecipeCard";
-import { useFavorites } from "../../context/FavoritesContext";
+import { useFavorites } from "../../context/useFavorites";
 
 const Favorites = () => {
   const { favorites } = useFavorites();
