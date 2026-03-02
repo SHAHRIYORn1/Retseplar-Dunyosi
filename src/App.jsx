@@ -4,8 +4,8 @@ import Home from "./pages/Home";
 import RecipeDetail from "./pages/RecipeDetail";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
-import AllRetsep from "./pages/AllRetsep"; 
-// import Favorites from "./pages/Favorites"; // <--- Buni kommentga oling
+import AllRetsep from "./pages/AllRetsep";
+import Favorites from "./pages/Favorites/Favorites";
 
 import { FavoritesProvider } from "./context/FavoritesContext";
 
@@ -18,7 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/all-recipes" element={<AllRetsep />} />
-        {/* <Route path="/favorites" element={<Favorites />} /> */} {/* <--- Buni ham kommentga oling */}
+        <Route path="/favorites" element={<Favorites />} />
       </Routes>
     </FavoritesProvider>
   );
