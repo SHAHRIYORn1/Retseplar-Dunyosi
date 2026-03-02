@@ -1,11 +1,12 @@
 import React from "react";
 import "./Footer.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-
+        {/* Brand Section */}
         <div className="footer-section brand">
           <h2>Retseplar Dunyosi</h2>
           <p>
@@ -14,39 +15,42 @@ const Footer = () => {
           </p>
         </div>
 
+        {/* Categories Section */}
         <div className="footer-section">
           <h3>Bo'limlar</h3>
           <ul>
-            <li><a href="#">Milliy taomlar</a></li>
-            <li><a href="#">Fast foodlar</a></li>
-            <li><a href="#">Shirinliklar</a></li>
-            <li><a href="#">Salatlar</a></li>
+            <li><Link to="#">Milliy taomlar</Link></li>
+            <li><Link to="#">Fast foodlar</Link></li>
+            <li><Link to="#">Shirinliklar</Link></li>
+            <li><Link to="#">Salatlar</Link></li>
           </ul>
         </div>
 
+        {/* Links Section */}
         <div className="footer-section">
           <h3>Foydali Havolalar</h3>
           <ul>
-            <li><a href="#">Biz haqimizda</a></li>
-            <li><a href="#">Bog'lanish</a></li>
-            <li><a href="#">Maxfiylik siyosati</a></li>
-            <li><a href="#">Foydalanish shartlari</a></li>
+            <li><Link to="#">Biz haqimizda</Link></li>
+            <li><Link to="#">Bog'lanish</Link></li>
+            <li><Link to="#">Maxfiylik siyosati</Link></li>
+            <li><Link to="#">Foydalanish shartlari</Link></li>
           </ul>
         </div>
 
+        {/* Contact Section */}
         <div className="footer-section">
           <h3>Aloqa</h3>
-          <p>Email: retseplardunyosi@gmail.com</p>
-          <p>Telefon: +998 90 123 45 67</p>
+          <p><strong>Email:</strong> retseplardunyosi@gmail.com</p>
+          <p><strong>Telefon:</strong> +998 90 123 45 67</p>
           <div className="socials">
-            <span>Instagram</span>
-            <span>Telegram</span>
-            <span>YouTube</span>
+            <a href="#" className="social-link">Instagram</a>
+            <a href="#" className="social-link">Telegram</a>
+            <a href="#" className="social-link">YouTube</a>
           </div>
         </div>
-
       </div>
 
+      {/* Bottom Section */}
       <div className="footer-bottom">
         <p>
           © 2026 Retseplar Dunyosi | Created by Shahriyor & Azizbek

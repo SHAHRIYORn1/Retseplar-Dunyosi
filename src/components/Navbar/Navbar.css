@@ -1,10 +1,11 @@
-/* 1. Global reset - hamma brauzerlardagi standart bo'shliqlarni olib tashlaydi */
+/* 1. Global reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* 2. NAVBAR */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -15,8 +16,16 @@
   position: sticky;
   top: 0;
   left: 0;
-  width: 100%; /* Navbarni butun ekran bo'ylab yoyadi */
-  z-index: 1000; /* Boshqa elementlardan ustun turishi uchun */
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
 }
 
 /* 3. Logo va Brend qismi */
@@ -28,6 +37,7 @@
 
 .logo-img {
   height: 40px;
+  width: auto;
 }
 
 .brand-name {
@@ -39,22 +49,34 @@
 .brand-name a {
   color: black;
   text-decoration: none;
+  transition: color 0.3s;
+}
+
+.brand-name a:hover {
+  color: #ff6b6b;
 }
 
 /* 4. Menyu ro'yxati */
+.nav-menu {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
 .nav-list {
   display: flex;
   gap: 25px;
   list-style: none;
   margin: 0;
   padding: 0;
+  align-items: center;
 }
 
 .nav-item a {
   text-decoration: none;
   color: #555;
   font-weight: 500;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
   display: flex;
   align-items: center;
 }
@@ -63,56 +85,18 @@
   color: #ff6b6b;
 }
 
-/* 5. DROPDOWN (Ochiladigan menyu) */
-.dropdown {
-  position: relative; /* Ichki menyu bunga qarab joylashadi */
+/* 5. User actions (Kirish tugmasi) */
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-shrink: 0;
 }
 
-.dropdown-menu {
-  display: none; /* Dastlab ko'rinmaydi */
-  position: absolute;
-  top: 100%; /* Navbardan pastda chiqishi uchun */
-  left: 0;
-  background-color: white;
-  min-width: 180px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  list-style: none;
-  padding: 10px 0;
-  border-radius: 8px;
-  z-index: 100;
+.user-actions a {
+  text-decoration: none;
 }
 
-.dropdown-menu li a {
-  padding: 10px 20px;
-  display: block;
-  font-size: 14px;
-  color: #333;
-}
-
-.dropdown-menu li a:hover {
-  background-color: #f9f9f9;
-  color: #ff6b6b;
-}
-
-/* Sichqoncha kelganda menyuni ko'rsatish */
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-
-/* 6. IKONKA ANIMATSIYASI (Strelka) */
-.arrow-icon {
-  margin-left: 6px;
-  font-size: 12px;
-  transition: transform 0.4s ease; /* Aylanish silliqligi */
-  display: inline-block;
-}
-
-/* Sichqoncha kelganda ikonkani 180 gradusga aylantirish */
-.dropdown:hover .arrow-icon {
-  transform: rotate(180deg);
-}
-
-/* 7. Kirish tugmasi */
 .login-btn {
   padding: 8px 18px;
   background-color: #ff6b6b;
@@ -122,9 +106,278 @@
   cursor: pointer;
   font-weight: bold;
   transition: all 0.3s ease;
+  font-size: 1rem;
 }
 
 .login-btn:hover {
   background-color: #e55a5a;
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+
+/* 6. HAMBURGER MENYU */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 5px;
+  gap: 5px;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Hamburger ochilganda animatsiya */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* ============================== */
+/* TABLET (768px - 1024px) */
+/* ============================== */
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 1rem 1.5rem;
+  }
+
+  .nav-list {
+    gap: 15px;
+  }
+
+  .nav-item a {
+    font-size: 14px;
+  }
+
+  .logo-img {
+    height: 35px;
+  }
+
+  .brand-name {
+    font-size: 1.3rem;
+  }
+
+  .login-btn {
+    padding: 7px 15px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================== */
+/* MOBILE (max-width: 768px) */
+/* ============================== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+    flex-wrap: wrap;
+    position: relative;
+  }
+
+  .navbar-container {
+    width: 100%;
+  }
+
+  /* Logo container */
+  .logo-container {
+    gap: 8px;
+  }
+
+  .logo-img {
+    height: 32px;
+  }
+
+  .brand-name {
+    font-size: 1.2rem;
+  }
+
+  /* Hamburger menyu ko'rinadi */
+  .hamburger {
+    display: flex;
+    order: 3;
+  }
+
+  /* Nav menyu vertikal */
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid #f0f0f0;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+  }
+
+  /* Menyu ochilganda ko'rinadigan qil */
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 0;
+    padding: 1rem 0;
+    width: 100%;
+  }
+
+  .nav-item {
+    padding: 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .nav-item:last-child {
+    border-bottom: none;
+  }
+
+  .nav-item a {
+    display: block;
+    padding: 12px 1.5rem;
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .nav-item a:hover {
+    background-color: #f9f9f9;
+  }
+
+  /* User actions mobile */
+.user-actions {
+    display: none;
+    width: 100%;
+    padding: 1rem;
+    position: absolute;
+    top: auto;
+    bottom: -70px;
+    left: 0;
+    border-top: 1px solid #f0f0f0;
+    justify-content: center;
+  }
+
+  /* Menyu ochilganda kirish tugmasi ko'rinadi */
+  .nav-menu.active + .user-actions {
+    display: flex;
+  }
+
+  .user-actions a {
+    width: 100%;
+  }
+
+  .login-btn {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================== */
+/* KICHIK MOBILE (max-width: 480px) */
+/* ============================== */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.75rem;
+  }
+
+  .navbar-container {
+    gap: 0.5rem;
+  }
+
+  .logo-container {
+    gap: 6px;
+    flex: 1;
+  }
+
+  .logo-img {
+    height: 30px;
+  }
+
+  .brand-name {
+    font-size: 1rem;
+  }
+
+  .hamburger span {
+    width: 22px;
+    height: 2.5px;
+  }
+
+  .nav-menu {
+    top: 65px;
+  }
+
+  .nav-item a {
+    padding: 10px 1rem;
+    font-size: 13px;
+  }
+
+  .user-actions {
+    padding: 0.75rem;
+    bottom: -60px;
+  }
+
+  .login-btn {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+}
+
+/* ============================== */
+/* EXTRA KICHIK MOBILE (max-width: 360px) */
+/* ============================== */
+@media (max-width: 360px) {
+  .navbar {
+    padding: 0.5rem;
+  }
+
+  .logo-container {
+    gap: 4px;
+  }
+
+  .logo-img {
+    height: 28px;
+  }
+
+  .brand-name {
+    font-size: 0.9rem;
+  }
+
+  .hamburger span {
+    width: 20px;
+    height: 2px;
+  }
+
+  .nav-item a {
+    padding: 8px 1rem;
+    font-size: 12px;
+  }
+
+  .login-btn {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+
+  .user-actions {
+    padding: 0.5rem;
+    bottom: -55px;
+  }
 }
