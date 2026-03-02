@@ -1,0 +1,78 @@
+/* src/pages/Login/Login.module.css */
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  padding: 20px;
+}
+
+.loginForm {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.loginForm h2 {
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.inputGroup {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.inputGroup label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.toggleText {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.toggleText a {
+  color: #ff6b6b;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.toggleText a:hover {
+  text-decoration: underline;
+}
+
+.passwordWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.passwordWrapper input {
+  padding-right: 40px;
+}
+
+.togglePassword {
+  position: absolute;
+  right: 15px;
+  cursor: pointer;
+  color: #777;
+  user-select: none;
+}
