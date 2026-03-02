@@ -16,7 +16,6 @@ const Navbar = () => {
   return (
     <header className="navbar">
       <div className="navbar-container">
-        {/* LOGO */}
         <div className="logo-container">
           <img src="/logo.png" alt="Logo" className="logo-img" />
           <h1 className="brand-name">
@@ -26,7 +25,6 @@ const Navbar = () => {
           </h1>
         </div>
 
-        {/* HAMBURGER MENYU */}
         <button
           className={`hamburger ${isMenuOpen ? "active" : ""}`}
           onClick={toggleMenu}
@@ -38,7 +36,6 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* NAV MENYU */}
       <nav className={`nav-menu ${isMenuOpen ? "active" : ""}`}>
         <ul className="nav-list">
           <li className="nav-item">
@@ -49,12 +46,12 @@ const Navbar = () => {
 
           <li className="nav-item">
             <Link to="/all-recipes" onClick={closeMenu}>
-             Barcha Retseplar
+              Barcha Retseplar
             </Link>
           </li>
 
           <li className="nav-item">
-            <Link to="#" onClick={closeMenu}>
+            <Link to="/favorites" onClick={closeMenu}>
               Favorites
             </Link>
           </li>
@@ -67,7 +64,6 @@ const Navbar = () => {
         </ul>
       </nav>
 
-      {/* USER ACTIONS */}
       <div className="user-actions">
         <Link to="/login" onClick={closeMenu}>
           <button className="login-btn">Kirish</button>
