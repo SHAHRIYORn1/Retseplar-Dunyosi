@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; 
 import Button from "../../components/Button/Button";
 import styles from "./Login.module.css";
 
@@ -9,21 +10,17 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     if (password.length < 6) {
       alert("Parol kamida 6 ta belgidan iborat bo'lishi kerak!");
       return;
     }
-
     console.log("Login:", { email, password });
-    alert("Tizimga kirishga urinish: " + email);
   };
 
   return (
     <div className={styles.loginContainer}>
       <form className={styles.loginForm} onSubmit={handleSubmit}>
         <h2>Tizimga kirish</h2>
-
         <div className={styles.inputGroup}>
           <label>Email</label>
           <input
@@ -34,7 +31,6 @@ const Login = () => {
             required
           />
         </div>
-
         <div className={styles.inputGroup}>
           <label>Parol</label>
           <div className={styles.passwordWrapper}>
@@ -45,21 +41,14 @@ const Login = () => {
               placeholder="Parolni kiriting"
               required
             />
-            <span
-              className={styles.togglePassword}
-              onClick={() => setShowPassword(!showPassword)}
-            >
+            <span className={styles.togglePassword} onClick={() => setShowPassword(!showPassword)}>
               {showPassword ? "🙈" : "👁️"}
             </span>
           </div>
         </div>
-
-        <Button variant="primary" type="submit">
-          Kirish
-        </Button>
-
+        <Button variant="primary" type="submit">Kirish</Button>
         <p className={styles.toggleText}>
-          Profilingiz yo'qmi? <a href="/register">Ro'yxatdan o'tish</a>
+          Profilingiz yo'qmi? <Link to="/register">Ro'yxatdan o'tish</Link>
         </p>
       </form>
     </div>
