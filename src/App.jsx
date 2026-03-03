@@ -1,17 +1,20 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext"; // Qo'shildi
+import { AuthProvider } from "./context/AuthContext";
 import { FavoritesProvider } from "./context/FavoritesContext";
+
+// Sahifalar (Pages)
 import Home from "./pages/Home";
 import RecipeDetail from "./pages/RecipeDetail";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import AllRetsep from "./pages/AllRetsep";
 import Favorites from "./pages/Favorites/Favorites";
+import AddRecipe from "./pages/AddRecipe/AddRecipe"; // Yangi sahifa
 
 function App() {
   return (
-    <AuthProvider> 
+    <AuthProvider>
       <FavoritesProvider>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -20,6 +23,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/all-recipes" element={<AllRetsep />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/add-recipe" element={<AddRecipe />} />
         </Routes>
       </FavoritesProvider>
     </AuthProvider>

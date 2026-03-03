@@ -1,14 +1,28 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
+
+  // Qo'shish tugmasi bosilganda loginni tekshirish
+  const handleAddRecipeClick = (e) => {
+    e.preventDefault();
+    closeMenu();
+    
+    if (user) {
+      navigate("/add-recipe");
+    } else {
+      alert("Retsept qo'shish uchun avval tizimga kiring!");
+      navigate("/login");
+    }
+  };
 
   return (
     <header className="navbar">
@@ -31,7 +45,6 @@ const Navbar = () => {
             <Link to="/" onClick={closeMenu}>Bosh sahifa</Link>
           </li>
           
-          {/* Dropdown menyu */}
           <li className="nav-item dropdown">
             <Link to="/all-recipes" className="dropbtn" onClick={closeMenu}>
               Barcha Retseptlar ▾
@@ -48,7 +61,8 @@ const Navbar = () => {
             <Link to="/favorites" onClick={closeMenu}>Favorites</Link>
           </li>
           <li className="nav-item">
-            <Link to="/add-recipe" onClick={closeMenu}>Qo'shish</Link>
+            {/* Bu yerda onClick mantiqi ishlaydi */}
+            <Link to="/add-recipe" onClick={handleAddRecipeClick}>Qo'shish</Link>
           </li>
         </ul>
       </nav>

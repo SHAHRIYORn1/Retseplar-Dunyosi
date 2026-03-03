@@ -3,18 +3,23 @@ import { useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import RecipeCard from "../components/RecipeCard/RecipeCard";
 import Footer from "../components/Footer/Footer";
-import taomlar from "../toamlar.json"; 
+import taomlarJSON from "../toamlar.json"; 
 
 const AllRetsep = () => {
-    const [filteredData, setFilteredData] = useState(taomlar);
+    const [filteredData, setFilteredData] = useState([]);
     const location = useLocation();
 
     useEffect(() => {
+        // 1. JSON va LocalStorage ma'lumotlarini birlashtirish
+        const localRecipes = JSON.parse(localStorage.getItem("allRecipes")) || [];
+        const allCombinedData = [...taomlarJSON, ...localRecipes];
+
+        // 2. Qidiruv va Filtr mantiqi
         const params = new URLSearchParams(location.search);
         const searchQuery = params.get("search")?.toLowerCase() || "";
         const catQuery = params.get("cat") || "";
 
-        let results = taomlar;
+        let results = allCombinedData;
 
         if (searchQuery) {
             results = results.filter(taom => 
