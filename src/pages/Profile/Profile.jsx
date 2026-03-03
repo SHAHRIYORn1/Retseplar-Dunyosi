@@ -14,8 +14,8 @@ const Profile = () => {
     avatar: "",
     email: "",
     username: "",
-    currentPassword: "", // Tasdiqlash uchun
-    newPassword: ""      // Yangi parol uchun
+    currentPassword: "",
+    newPassword: ""
   });
 
   useEffect(() => {
@@ -35,29 +35,26 @@ const Profile = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // 1. Muhim ma'lumotlar o'zgarganini tekshiramiz (Email yoki Yangi Parol)
+    // Faqat Email yoki Yangi Parol kiritilganda joriy parolni tekshirish
     const isSecretChanged = formData.email !== user.email || formData.newPassword !== "";
 
     if (isSecretChanged) {
-      // Agar email yoki parol o'zgarayotgan bo'lsa, joriy parolni tekshirish shart
       if (formData.currentPassword !== user.password) {
-        alert("Email yoki parolni o'zgartirish uchun amaldagi parolni to'g'ri kiriting!");
+        alert("Email yoki parolni o'zgartirish uchun joriy parolni to'g'ri kiriting!");
         return;
       }
     }
 
-    // 2. Yangi obyekt tayyorlaymiz
     const updatedData = {
       fullName: formData.fullName,
       avatar: formData.avatar,
       username: formData.username,
       email: formData.email,
-      password: formData.newPassword || user.password // Agar yangi parol yozilmagan bo'lsa, eskisi qoladi
+      password: formData.newPassword || user.password
     };
 
-    // 3. Saqlash
     updateUserData(updatedData);
-    alert("Ma'lumotlar muvaffaqiyatli saqlandi!");
+    alert("Ma'lumotlar saqlandi!");
     setIsEditing(false);
     setFormData(prev => ({ ...prev, currentPassword: "", newPassword: "" }));
   };
@@ -70,7 +67,13 @@ const Profile = () => {
           {!isEditing ? (
             <div className={styles.profileDisplay}>
               <div className={styles.avatarWrapper}>
-                <img src={user?.avatar || "https://via.placeholder.com/150"} alt="Avatar" />
+                {user?.avatar ? (
+                  <img src={user.avatar} alt="Avatar" />
+                ) : (
+                  <div className={styles.largeLetterAvatar}>
+                    {(user?.fullName?.charAt(0) || user?.username?.charAt(0))?.toUpperCase()}
+                  </div>
+                )}
               </div>
               <div className={styles.userInfo}>
                 <h1>{user?.fullName || user?.username}</h1>
@@ -84,7 +87,6 @@ const Profile = () => {
           ) : (
             <form onSubmit={handleSubmit} className={styles.editForm}>
               <h2>Profil sozlamalari</h2>
-              
               <div className={styles.formGrid}>
                 <div className={styles.inputGroup}>
                   <label>To'liq ism</label>
@@ -104,13 +106,10 @@ const Profile = () => {
                 </div>
               </div>
 
-              {/* Faqat email yoki parol o'zgarishi kerak bo'lsa, foydalanuvchi ko'rishi uchun qizil eslatma */}
               <div className={styles.passwordSection}>
-                <p className={styles.sectionHint}>
-                  Email yoki parolni o'zgartirishni xohlasangiz, joriy parolingizni kiritishingiz shart:
-                </p>
+                <p className={styles.sectionHint}>Email yoki parolni o'zgartirish uchun tasdiqlash:</p>
                 <div className={styles.formGrid}>
-                  <input type="password" placeholder="Joriy parol (tasdiqlash uchun)" value={formData.currentPassword} onChange={(e) => setFormData({...formData, currentPassword: e.target.value})} />
+                  <input type="password" placeholder="Joriy parol" value={formData.currentPassword} onChange={(e) => setFormData({...formData, currentPassword: e.target.value})} />
                   <input type="password" placeholder="Yangi parol (ixtiyoriy)" value={formData.newPassword} onChange={(e) => setFormData({...formData, newPassword: e.target.value})} />
                 </div>
               </div>
@@ -122,21 +121,6 @@ const Profile = () => {
             </form>
           )}
         </section>
-        
-        {/* Retseptlar ro'yxati (o'zgarishsiz qoladi) */}
-        <div className={styles.recipesHeader}>
-          <h3>Mening retseptlarim ({myRecipes.length})</h3>
-        </div>
-        <div className={styles.recipesGrid}>
-           {myRecipes.map(recipe => (
-             <div key={recipe.id} className={styles.recipeCard}>
-               <img src={recipe.imageName} alt="" />
-               <div className={styles.recipeContent}>
-                 <h4>{recipe.title}</h4>
-               </div>
-             </div>
-           ))}
-        </div>
       </div>
     </div>
   );

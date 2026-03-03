@@ -1,4 +1,4 @@
-/* NAVBAR ASOSIY QISMI */
+/* NAVBAR ASOSIY KONTEYNERI */
 .navbar {
   background-color: #ffffff;
   height: 80px;
@@ -8,11 +8,12 @@
   top: 0;
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  font-family: 'Inter', sans-serif;
 }
 
 .navbar-container {
   display: flex;
-  justify-content: space-between; /* 3ta blokni chetlarga suradi */
+  justify-content: space-between; /* 3ta qismni (brand, menu, actions) chetlarga suradi */
   align-items: center;
   width: 100%;
   max-width: 1400px;
@@ -20,9 +21,9 @@
   padding: 0 30px;
 }
 
-/* 1. BRAND (CHAPDA) */
+/* 1. LOGOTIP VA BRAND (CHAPDA) */
 .navbar-brand {
-  flex: 0 0 250px; /* Logotip qismi kengligi o'zgarmaydi */
+  flex: 0 0 250px; /* Chap blok kengligi */
   display: flex;
   align-items: center;
 }
@@ -47,25 +48,19 @@
   white-space: nowrap;
 }
 
-/* 2. NAV MENU (MARKAZDA) */
+/* 2. MENYU ELEMENTLARI (MARKAZDA) */
 .nav-menu {
-  flex: 1; /* Markazdagi barcha bo'sh joyni egallaydi */
+  flex: 1; /* Markazdagi bo'sh joyni to'liq egallaydi */
   display: flex;
-  justify-content: center; /* Elementlarni o'rtaga yig'adi */
+  justify-content: center; /* Linklarni o'rtaga yig'adi */
 }
 
 .nav-list {
   display: flex;
   list-style: none;
-  gap: 30px; /* Elementlar orasidagi masofa */
+  gap: 30px;
   margin: 0;
   padding: 0;
-}
-
-.nav-item {
-  position: relative;
-  display: flex;
-  align-items: center;
 }
 
 .nav-item a {
@@ -73,8 +68,7 @@
   color: #444;
   font-weight: 600;
   font-size: 1rem;
-  transition: color 0.2s ease;
-  white-space: nowrap;
+  transition: all 0.2s ease;
 }
 
 .nav-item a:hover {
@@ -82,10 +76,14 @@
 }
 
 /* DROPDOWN (KATEGORIYALAR) */
+.dropdown {
+  position: relative;
+}
+
 .dropdown-content {
   display: none;
   position: absolute;
-  top: 100%; 
+  top: 100%;
   left: 70%;
   transform: translateX(-50%);
   background-color: #ffffff;
@@ -115,7 +113,7 @@
 
 /* 3. USER ACTIONS (O'NGDA) */
 .user-actions {
-  flex: 0 0 250px; /* O'ng qism kengligi chap bilan bir xil (balans uchun) */
+  flex: 0 0 250px; /* Chap qism bilan simmetriya uchun o'ng blok ham 250px */
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -128,9 +126,10 @@
   gap: 12px;
 }
 
+/* AVATAR STILI */
 .avatar {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   background-color: #ff6b6b;
   color: white;
   border-radius: 50%;
@@ -138,14 +137,25 @@
   align-items: center;
   justify-content: center;
   font-weight: 700;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: transform 0.2s;
+  transition: transform 0.2s ease;
+  overflow: hidden;
+  border: 2px solid transparent;
 }
 
 .avatar:hover {
   transform: scale(1.1);
+  border-color: #ff6b6b;
 }
 
+.nav-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* TUGMALAR */
 .login-btn, .logout-btn {
   padding: 10px 22px;
   border-radius: 25px;
@@ -170,7 +180,7 @@
   color: white;
 }
 
-/* HAMBURGER (MOBIL) */
+/* MOBIL REJIM (HAMBURGER) */
 .hamburger {
   display: none;
   flex-direction: column;
@@ -187,14 +197,10 @@
   border-radius: 3px;
 }
 
-/* MOBIL MOSLASHUV */
+/* PLANSHET VA MOBIL MOSLASHUV */
 @media screen and (max-width: 1024px) {
-  .navbar-brand, .user-actions {
-    flex: 1; /* Mobil ekranlarda kenglikni avto qiladi */
-  }
-
   .nav-menu {
-    display: none; /* JS orqali boshqariladigan 'active' klassi bo'lmasa yopiq turadi */
+    display: none; /* JS'da 'active' klassi bo'lmasa yashirin bo'ladi */
     position: absolute;
     top: 80px;
     left: 0;
@@ -217,5 +223,9 @@
 
   .hamburger {
     display: flex;
+  }
+
+  .navbar-brand, .user-actions {
+    flex: 1;
   }
 }

@@ -22,11 +22,13 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("user");
   };
 
-  // Har qanday yangilanish uchun bitta universal funksiya
+  // Yangilangan universal funksiya
   const updateUserData = (newData) => {
-    const updatedUser = { ...user, ...newData };
-    setUser(updatedUser);
-    localStorage.setItem("user", JSON.stringify(updatedUser));
+    setUser((prevUser) => {
+      const updatedUser = { ...prevUser, ...newData };
+      localStorage.setItem("user", JSON.stringify(updatedUser));
+      return updatedUser; // Yangi obyekt qaytarish reaktivlikni ta'minlaydi
+    });
   };
 
   return (

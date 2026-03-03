@@ -11,22 +11,9 @@ const Navbar = () => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
-  const handleAddRecipeClick = (e) => {
-    e.preventDefault();
-    closeMenu();
-    if (user) {
-      navigate("/add-recipe");
-    } else {
-      alert("Retsept qo'shish uchun avval tizimga kiring!");
-      navigate("/login");
-    }
-  };
-
   return (
     <header className="navbar">
       <div className="navbar-container">
-        
-        {/* 1. BRAND (CHAPDA) */}
         <div className="navbar-brand">
           <Link to="/" onClick={closeMenu} className="logo-link">
             <img src="/logo.png" alt="Logo" className="logo-img" />
@@ -34,12 +21,10 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* 2. NAV ITEMS (MARKAZDA) */}
         <nav className={`nav-menu ${isMenuOpen ? "active" : ""}`}>
           <ul className="nav-list">
-            <li className="nav-item">
-              <Link to="/" onClick={closeMenu}>Bosh sahifa</Link>
-            </li>
+            <li className="nav-item"><Link to="/" onClick={closeMenu}>Bosh sahifa</Link></li>
+            <li className="nav-item"><Link to="/favorites" onClick={closeMenu}>Favorites</Link></li>
             <li className="nav-item dropdown">
               <Link to="/all-recipes" className="dropbtn" onClick={closeMenu}>
                 Barcha Retseptlar ▾
@@ -51,22 +36,21 @@ const Navbar = () => {
                 <Link to="/all-recipes?cat=Shirinliklar" onClick={closeMenu}>Shirinliklar</Link>
               </div>
             </li>
-            <li className="nav-item">
-              <Link to="/favorites" onClick={closeMenu}>Favorites</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/add-recipe" onClick={handleAddRecipeClick}>Qo'shish</Link>
-            </li>
+            <li className="nav-item"><Link to="/add-recipe" onClick={closeMenu}>Qo'shish</Link></li>
           </ul>
         </nav>
 
-        {/* 3. USER ACTIONS (O'NGDA) */}
         <div className="user-actions">
           {user ? (
             <div className="user-menu">
               <Link to="/profile" className="profile-link" onClick={closeMenu}>
                 <div className="avatar">
-                  {user.username.charAt(0).toUpperCase()}
+                  {/* AGAR RASM BO'LSA RASM, BO'LMASA HARF */}
+                  {user.avatar ? (
+                    <img src={user.avatar} alt="U" className="nav-avatar-img" />
+                  ) : (
+                    (user.fullName?.charAt(0) || user.username?.charAt(0))?.toUpperCase()
+                  )}
                 </div>
               </Link>
               <button className="logout-btn" onClick={logout}>Chiqish</button>
@@ -76,12 +60,10 @@ const Navbar = () => {
               <button className="login-btn">Kirish</button>
             </Link>
           )}
-          
           <button className={`hamburger ${isMenuOpen ? "active" : ""}`} onClick={toggleMenu}>
             <span></span><span></span><span></span>
           </button>
         </div>
-
       </div>
     </header>
   );
