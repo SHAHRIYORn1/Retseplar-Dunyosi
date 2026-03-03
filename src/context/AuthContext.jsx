@@ -22,17 +22,24 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("user");
   };
 
-  // Yangilangan universal funksiya
+  // Profilni yangilash (Navbar va Profile uchun reaktiv)
   const updateUserData = (newData) => {
     setUser((prevUser) => {
-      const updatedUser = { ...prevUser, ...newData };
-      localStorage.setItem("user", JSON.stringify(updatedUser));
-      return updatedUser; // Yangi obyekt qaytarish reaktivlikni ta'minlaydi
+      const updated = { ...prevUser, ...newData };
+      localStorage.setItem("user", JSON.stringify(updated));
+      return updated;
     });
   };
 
+  // Retseptni o'chirish
+  const deleteRecipe = (recipeId) => {
+    const allRecipes = JSON.parse(localStorage.getItem("allRecipes")) || [];
+    const filtered = allRecipes.filter(r => r.id !== recipeId);
+    localStorage.setItem("allRecipes", JSON.stringify(filtered));
+  };
+
   return (
-    <AuthContext.Provider value={{ user, login, logout, updateUserData }}>
+    <AuthContext.Provider value={{ user, login, logout, updateUserData, deleteRecipe }}>
       {children}
     </AuthContext.Provider>
   );
