@@ -3,6 +3,11 @@ import "./Footer.css";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+  // Sahifaning eng tepasiga silliq qaytish funksiyasi
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -15,14 +20,30 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Categories Section */}
+        {/* Categories Section - ENDI ISHLAYDI */}
         <div className="footer-section">
           <h3>Bo'limlar</h3>
           <ul>
-            <li><Link to="#">Milliy taomlar</Link></li>
-            <li><Link to="#">Fast foodlar</Link></li>
-            <li><Link to="#">Shirinliklar</Link></li>
-            <li><Link to="#">Salatlar</Link></li>
+            <li>
+              <Link to="/all-recipes?cat=Milliy Taomlar" onClick={scrollToTop}>
+                Milliy taomlar
+              </Link>
+            </li>
+            <li>
+              <Link to="/all-recipes?cat=FastFood" onClick={scrollToTop}>
+                Fast foodlar
+              </Link>
+            </li>
+            <li>
+              <Link to="/all-recipes?cat=Shirinliklar" onClick={scrollToTop}>
+                Shirinliklar
+              </Link>
+            </li>
+            <li>
+              <Link to="/all-recipes?cat=Salatlar" onClick={scrollToTop}>
+                Salatlar
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -30,10 +51,10 @@ const Footer = () => {
         <div className="footer-section">
           <h3>Foydali Havolalar</h3>
           <ul>
+            <li><Link to="/">Bosh sahifa</Link></li>
+            <li><Link to="/favorites">Saralanganlar</Link></li>
             <li><Link to="#">Biz haqimizda</Link></li>
-            <li><Link to="#">Bog'lanish</Link></li>
             <li><Link to="#">Maxfiylik siyosati</Link></li>
-            <li><Link to="#">Foydalanish shartlari</Link></li>
           </ul>
         </div>
 
@@ -43,9 +64,9 @@ const Footer = () => {
           <p><strong>Email:</strong> retseplardunyosi@gmail.com</p>
           <p><strong>Telefon:</strong> +998 90 123 45 67</p>
           <div className="socials">
-            <a href="#" className="social-link">Instagram</a>
-            <a href="#" className="social-link">Telegram</a>
-            <a href="#" className="social-link">YouTube</a>
+            <a href="https://instagram.com" className="social-link" target="_blank" rel="noreferrer">Instagram</a>
+            <a href="https://t.me" className="social-link" target="_blank" rel="noreferrer">Telegram</a>
+            <a href="https://youtube.com" className="social-link" target="_blank" rel="noreferrer">YouTube</a>
           </div>
         </div>
       </div>

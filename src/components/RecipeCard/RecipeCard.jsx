@@ -6,43 +6,65 @@ import LoveIcon from "../../assets/love-icon.png";
 import { useFavorites } from "../../context/useFavorites";
 
 const RecipeCard = ({ taom }) => {
-  // favorites ro'yxatini ham olamiz
   const { toggleFavorite, favorites } = useFavorites();
 
   // Taom sevimlilar ro'yxatida borligini tekshirish
   const isFavorite = favorites.some((fav) => fav.id === taom?.id);
 
-  let imageUrl = LoveIcon;
-  if (taom && taom.imageName) {
-    try {
-      imageUrl = new URL(`../../assets/${taom.imageName}`, import.meta.url)
-        .href;
-    } catch (e) {
-      console.error("Rasm yo'lini yaratishda xatolik:", e);
+  // Rasm mantiqi: Agar imageName URL bo'lsa uni ishlatadi, aks holda assets papkasidan qidiradi
+  let imageUrl;
+  if (taom?.imageName) {
+    if (taom.imageName.startsWith("http")) {
+      imageUrl = taom.imageName;
+    } else {
+      try {
+        imageUrl = new URL(`../../assets/${taom.imageName}`, import.meta.url).href;
+      } catch (e) {
+        imageUrl = "/default-food.png"; // Rasm topilmasa default rasm
+      }
     }
   }
 
   return (
     <div className="recipe-card">
-      <img
-        src={imageUrl}
-        alt={taom?.title || "Taom"}
-        className="recipe-image"
-      />
+      <div className="image-wrapper" style={{ position: "relative" }}>
+        <img
+          src={imageUrl}
+          alt={taom?.title || "Taom"}
+          className="recipe-image"
+          onError={(e) => {
+            e.target.src = "https://via.placeholder.com/300x200?text=Retsept+Rasmi";
+          }}
+        />
+        
+        {/* Taom kategoriyasi (Turi) uchun Span */}
+        {taom?.category && (
+          <span className="category-span">
+            {taom.category}
+          </span>
+        )}
+      </div>
+
       <div className="recipe-content">
         <h3 className="recipe-title">{taom?.title || "Noma'lum taom"}</h3>
-        <p className="recipe-description">{taom?.description || ""}</p>
+        <p className="recipe-description">
+          {taom?.description ? taom.description.substring(0, 60) + "..." : "Tavsif mavjud emas"}
+        </p>
+
         <div className="recipe-footer">
           <span className="recipe-time">🕒 {taom?.time || "---"}</span>
+          
           <div className="card-buttons-footer">
-            {/* Dinamik klass qo'shildi: isFavorite bo'lsa active-like qo'shiladi */}
+            {/* Sevimlilarga qo'shish tugmasi */}
             <button 
               className={`love-btn ${isFavorite ? "active-like" : ""}`} 
               onClick={() => toggleFavorite(taom)}
+              title="Saralanganlarga qo'shish"
             >
-              <img src={LoveIcon} alt="Sevimlilar" className="love-icon" />
+              <img src={LoveIcon} alt="Love" className="love-icon" />
             </button>
 
+            {/* Batafsil ko'rish tugmasi */}
             <Link to={`/recipe/${taom?.id}`} style={{ textDecoration: "none" }}>
               <Button variant="secondary">Ko'rish</Button>
             </Link>
