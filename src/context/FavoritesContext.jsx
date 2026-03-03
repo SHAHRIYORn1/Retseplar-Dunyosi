@@ -1,26 +1,36 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { useAuth } from "./AuthContext";
 
-// 1. Context yaratamiz
 const FavoritesContext = createContext();
 
-// 2. Provider komponentini yaratamiz
 export const FavoritesProvider = ({ children }) => {
-  const [favorites, setFavorites] = useState(() => {
-    try {
-      const savedFavorites = localStorage.getItem("favorites");
-      return savedFavorites ? JSON.parse(savedFavorites) : [];
-    } catch (error) {
-      console.error("LocalStorage'dan o'qishda xatolik:", error);
-      return [];
-    }
-  });
+  const { user } = useAuth();
+  const [favorites, setFavorites] = useState([]);
 
+  // Foydalanuvchi o'zgarganda (login/logout) sevimlilarni yuklash
   useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-  }, [favorites]);
+    if (user) {
+      // Har bir foydalanuvchi uchun alohida kalit (favorites_username)
+      const saved = localStorage.getItem(`favorites_${user.username}`);
+      setFavorites(saved ? JSON.parse(saved) : []);
+    } else {
+      // Foydalanuvchi chiqib ketsa, state'ni tozalash
+      setFavorites([]);
+    }
+  }, [user]);
+
+  // Sevimlilar o'zgarganda localStorage'ga yozish
+  useEffect(() => {
+    if (user) {
+      localStorage.setItem(`favorites_${user.username}`, JSON.stringify(favorites));
+    }
+  }, [favorites, user]);
 
   const toggleFavorite = (taom) => {
-    if (!taom || !taom.id) return;
+    if (!user) {
+      alert("Sevimlilarga qo'shish uchun avval akkauntingizga kiring!");
+      return;
+    }
 
     setFavorites((prev) => {
       const isFavorite = prev.find((item) => item.id === taom.id);
@@ -39,5 +49,5 @@ export const FavoritesProvider = ({ children }) => {
   );
 };
 
-// Hook'ni bu fayldan olib tashladik
+export const useFavorites = () => useContext(FavoritesContext);
 export default FavoritesContext;

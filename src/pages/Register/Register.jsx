@@ -5,14 +5,12 @@ import styles from "./Register.module.css";
 
 const Register = () => {
   const [formData, setFormData] = useState({ username: "", email: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false); // Parolni ko'rsatish holati
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Ma'lumotlarni localStorage ga saqlaymiz
     localStorage.setItem("registeredUser", JSON.stringify(formData));
-    
     alert("Muvaffaqiyatli ro'yxatdan o'tdingiz!");
     navigate("/login");
   };
@@ -21,6 +19,7 @@ const Register = () => {
     <div className={styles.loginContainer}>
       <form className={styles.loginForm} onSubmit={handleSubmit}>
         <h2>Ro'yxatdan o'tish</h2>
+        
         <div className={styles.inputGroup}>
           <label>Foydalanuvchi nomi</label>
           <input 
@@ -30,6 +29,7 @@ const Register = () => {
             required 
           />
         </div>
+
         <div className={styles.inputGroup}>
           <label>Email</label>
           <input 
@@ -39,15 +39,25 @@ const Register = () => {
             required 
           />
         </div>
+
         <div className={styles.inputGroup}>
           <label>Parol</label>
-          <input 
-            type="password" 
-            placeholder="Kamida 6 ta belgi"
-            onChange={(e) => setFormData({...formData, password: e.target.value})} 
-            required 
-          />
+          <div className={styles.passwordWrapper}>
+            <input 
+              type={showPassword ? "text" : "password"} // Shartli type
+              placeholder="Kamida 6 ta belgi"
+              onChange={(e) => setFormData({...formData, password: e.target.value})} 
+              required 
+            />
+            <span 
+              className={styles.togglePassword} 
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? "🙈" : "👁️"}
+            </span>
+          </div>
         </div>
+
         <Button variant="primary" type="submit">Ro'yxatdan o'tish</Button>
         <p className={styles.toggleText}>
           Profilingiz bormi? <Link to="/login">Tizimga kirish</Link>

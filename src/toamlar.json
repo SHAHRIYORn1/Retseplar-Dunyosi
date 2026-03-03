@@ -8,43 +8,212 @@
     "time": "120 daqiqa",
     "servings": "2",
     "difficulty": "O‘rtacha",
-    "ingredients": ["Guruch – 2 stakan", "Mol go‘shti – 300–400 gr", "Sabzi – 2–3 ta", "Piyoz – 1 ta", "Sariyog‘ – 100 gr", "Ziravorlar – ta’bga ko‘ra"],
-    "steps": ["Go‘shtni qovurish", "Piyoz va sabzi qo‘shish", "Guruchni qo‘shish", "Suv qo‘shish"]
+    "ingredients": [
+      "Guruch (Lazer yoki Alanga) – 1 kg",
+      "Mol go‘shti – 600 gr",
+      "Sabzi (sariq va qizil) – 1 kg",
+      "Piyoz – 2 ta",
+      "O'simlik yog'i – 200 ml",
+      "Noxat (ivutilgan) – 100 gr",
+      "Mayiz – 50 gr",
+      "Zira, tuz – ta’bga ko‘ra"
+    ],
+    "steps": [
+      "Go‘shtni yirik bo'laklarga bo'lib, qizigan yog'da qizarguncha qovuring.",
+      "Piyozni qo'shib, tilla rang bo'lguncha qovurishda davom eting.",
+      "Sabzini somoncha shaklida to'g'rab qo'shing va yumshaguncha qovuring.",
+      "Suv quyib, noxat va ziravorlarni qo'shib 40 daqiqa past olovda qaynating.",
+      "Guruchni yuvib soling va suvini tortguncha baland olovda pishiring.",
+      "Olovni pasaytirib, 20-25 daqiqa damlab qo'ying."
+    ]
   },
   {
     "id": "2",
     "title": "Qiyma Shashlik",
     "category": "Milliy Taomlar",
-    "description": "Ochiq olovda pishgan mazali qiyma shashlik.",
+    "description": "Ochiq olovda pishgan mazali va sershira qiyma shashlik.",
     "imageName": "shashlik.jpg",
     "time": "30 daqiqa",
     "servings": "4",
     "difficulty": "Oddiy",
-    "ingredients": ["Go‘sht – 500 gr", "Ziravorlar – ta’bga ko‘ra", "Sariyog‘ – 50 gr", "Tuz – ta’bga ko‘ra"],
-    "steps": ["Go‘shtni tayyorlash", "Shashlik tayyorlash", "Qovurish"]
+    "ingredients": [
+      "Mol go‘shti qiyma – 1 kg",
+      "Dumba yog'i – 200 gr",
+      "Piyoz – 3 ta",
+      "Zira, kashnich urug'i – ta’bga ko‘ra",
+      "Tuz va murch"
+    ],
+    "steps": [
+      "Go'sht va dumbani go'shtmaydalagichdan o'tkazing.",
+      "Piyozni mayda to'g'rab, go'shtga qo'shing va yaxshilab mushtlang.",
+      "Qiymani muzlatgichda 1 soat tindiring.",
+      "Sixlarga bir tekisda yopishtirib chiqing.",
+      "Qo'ra (mangal)da har ikki tomonini qizarguncha pishiring."
+    ]
   },
   {
     "id": "3",
     "title": "Somsa",
     "category": "Milliy Taomlar",
-    "description": "Xamir ichida go'sht va piyoz bilan to'ldirilgan somsa.",
+    "description": "Xamir ichida go'sht va piyoz bilan to'ldirilgan varaqi somsa.",
     "imageName": "somsa.png",
     "time": "45 daqiqa",
     "servings": "6",
     "difficulty": "O‘rtacha",
-    "ingredients": ["Un – 500 gr", "Go‘sht – 300 gr", "Sabzi – 2 ta", "Piyoz – 1 ta", "Sariyog‘ – 100 gr", "Tuz va ziravorlar – ta’bga ko‘ra"],
-    "steps": ["Xamir tayyorlash", "Go‘sht va sabzini tayyorlash", "Somsalarni shakllantirish", "Pishirish"]
+    "ingredients": [
+      "Un – 800 gr",
+      "Suv – 400 ml",
+      "Margarin yoki sariyog' – 200 gr",
+      "Go'sht – 500 gr",
+      "Piyoz – 500 gr",
+      "Zira, tuz, murch"
+    ],
+    "steps": [
+      "Oddiy xamir qoring va 20 daqiqa tindiring.",
+      "Xamirni yoyib, eritilgan yog' surting va o'rab chiqing.",
+      "Qiymaga go'sht va piyozni to'g'rab, ziravorlar qo'shing.",
+      "Xamirni bo'laklarga bo'lib, ichiga qiyma solib tuging.",
+      "200 daraja haroratda 35-40 daqiqa davomida pishiring."
+    ]
   },
   {
     "id": "4",
+    "title": "Lag'mon",
+    "category": "Milliy Taomlar",
+    "description": "Cho'zilgan xamir va mazali qayla bilan tayyorlanadigan milliy taom.",
+    "imageName": "lagmo'n.jpg",
+    "time": "90 daqiqa",
+    "servings": "4",
+    "difficulty": "Qiyin",
+    "ingredients": [
+      "Un – 1 kg",
+      "Tuxum – 1 ta",
+      "Go'sht – 400 gr",
+      "Karam, bolgar qalampiri, turp – 100 gr dan",
+      "Pomidor pastasi – 2 osh qoshiq",
+      "Sarimsoqpiyoz"
+    ],
+    "steps": [
+      "Xamirni tayyorlab, cho'zish usulida pishirib oling.",
+      "Go'sht va sabzavotlarni kichik kubik qilib to'g'rang.",
+      "Qozonda go'shtni, so'ng sabzavotlarni ketma-ket qovuring.",
+      "Suv quyib, qayla quyulgunicha past olovda qaynating.",
+      "Xamir ustiga qaylani solib, ko'katlar bilan tortiq qiling."
+    ]
+  },
+  {
+    "id": "5",
+    "title": "Manti",
+    "category": "Milliy Taomlar",
+    "description": "Go'shtli va qovoqli mazali bug'da pishgan manti.",
+    "imageName": "manti.jpg",
+    "time": "60 daqiqa",
+    "servings": "5",
+    "difficulty": "O‘rtacha",
+    "ingredients": [
+      "Un – 600 gr",
+      "Suv – 250 ml",
+      "Go'sht – 500 gr",
+      "Piyoz – 600 gr",
+      "Dumba yog'i – 100 gr",
+      "Tuz, murch"
+    ],
+    "steps": [
+      "Yumshoq xamir qoring va 30 daqiqa tindiring.",
+      "Go'sht va piyozni mayda to'g'rab, ziravorlar bilan aralashtiring.",
+      "Xamirni yupqa yoyib, to'rtburchak shaklda bo'ling.",
+      "Ichiga qiyma solib tuging.",
+      "Qasqonda bug'da 40-45 daqiqa pishiring."
+    ]
+  },
+  {
+    "id": "6",
+    "title": "Dimlama",
+    "category": "Milliy Taomlar",
+    "description": "Sabzavotlar va go'sht bilan dimlangan to'yimli taom.",
+    "imageName": "dimlama.jpg",
+    "time": "120 daqiqa",
+    "servings": "6",
+    "difficulty": "Oddiy",
+    "ingredients": [
+      "Qo'y yoki mol go'shti – 1 kg",
+      "Kartoshka – 1 kg",
+      "Sabzi, piyoz – 2-3 tadan",
+      "Karam – yarimta",
+      "Sarimsoqpiyoz, rayhon"
+    ],
+    "steps": [
+      "Qozon tubiga go'shtni, ustidan piyozni soling.",
+      "Ketma-ket sabzi, kartoshka va boshqa sabzavotlarni qatlam qilib terib chiqing.",
+      "Eng ustini karam barglari bilan yoping.",
+      "Olovni juda past qilib, qozon qopqog'ini mahkam yopib, 2 soat dimlang."
+    ]
+  },
+  {
+    "id": "7",
+    "title": "Chuchvara",
+    "category": "Milliy Taomlar",
+    "description": "Kichik shaklda tugilgan, sho'rvasi bilan tortiq qilinadigan taom.",
+    "imageName": "chuvara.jpg",
+    "time": "70 daqiqa",
+    "servings": "4",
+    "difficulty": "Qiyin",
+    "ingredients": [
+      "Qiyma – 400 gr",
+      "Piyoz – 2 ta",
+      "Xamir uchun un va suv",
+      "Qaymoq yoki qatiq (tortiq qilish uchun)"
+    ],
+    "steps": [
+      "Xamirni yupqa yoyib, juda mayda to'rtburchak qilib kesing.",
+      "Ichiga qiyma solib, tuguncha shaklida tuging.",
+      "Qaynayotgan suvda chuchvaralar suv betiga chiqquncha pishiring.",
+      "Qatiq va ko'katlar bilan dasturxonga torting."
+    ]
+  },
+  {
+    "id": "8",
+    "title": "Norin",
+    "category": "Milliy Taomlar",
+    "description": "Yupqa xamir va qazi-go'shtdan tayyorlanadigan milliy tansiq taom.",
+    "imageName": "norin.jpeg",
+    "time": "180 daqiqa",
+    "servings": "8",
+    "difficulty": "Juda qiyin",
+    "ingredients": [
+      "Qazi va mol go'shti – 1 kg",
+      "Un – 1 kg",
+      "Tuxum – 1 ta",
+      "Zira, murch, tuz",
+      "Piyoz"
+    ],
+    "steps": [
+      "Go'sht va qazini 2 soat davomida qaynatib pishiring.",
+      "Xamirni pishirib, so'ng yupqa somoncha shaklida to'g'rang.",
+      "Pishgan go'shtni ham mayda to'g'rab, xamir bilan aralashtiring.",
+      "Ziravorlar va to'g'ralgan piyoz qo'shing."
+    ]
+  },
+  {
+    "id": "9",
     "title": "Shakarob",
     "category": "Salatlar",
-    "description": "Palov bilan yeyiladigan piyozli salat.",
+    "description": "Palov bilan yeyiladigan sershira pomidor va piyozli salat.",
     "imageName": "shakarob.jpg",
     "time": "10 daqiqa",
     "servings": "2",
     "difficulty": "Oddiy",
-    "ingredients": ["Piyoz – 2 ta", "Pomidor – 2 ta", "Tuz, murch"],
-    "steps": ["Piyozni to'g'rash", "Pomidorni to'g'rash", "Aralashtirish"]
+    "ingredients": [
+      "Pomidor – 3 ta",
+      "Piyoz – 1 ta",
+      "Achchiq qalampir – ta'bga ko'ra",
+      "Tuz"
+    ],
+    "steps": [
+      "Piyozni juda yupqa, yarim oy shaklida to'g'rang va sovuq suvda yuving.",
+      "Pomidorni ham juda yupqa bo'laklarga bo'ling.",
+      "Ikkalasini aralashtirib, tuz va murch seping.",
+      "O'z sharbati chiqishi uchun 5 daqiqa qoldiring."
+    ]
   }
 ]

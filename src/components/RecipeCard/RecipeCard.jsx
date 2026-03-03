@@ -1,71 +1,71 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "../Button/Button";
+import { useAuth } from "../../context/AuthContext"; //
+import { useFavorites } from "../../context/FavoritesContext"; //
+import LoveIcon from "../../assets/love-icon.png"; //
+import Button from "../Button/Button"; //
 import "./RecipeCard.css";
-import LoveIcon from "../../assets/love-icon.png";
-import { useFavorites } from "../../context/useFavorites";
 
 const RecipeCard = ({ taom }) => {
-  const { toggleFavorite, favorites } = useFavorites();
+  const { user } = useAuth(); //
+  const { toggleFavorite, favorites } = useFavorites(); //
 
   // Taom sevimlilar ro'yxatida borligini tekshirish
   const isFavorite = favorites.some((fav) => fav.id === taom?.id);
 
-  // Rasm mantiqi: Agar imageName URL bo'lsa uni ishlatadi, aks holda assets papkasidan qidiradi
-  let imageUrl;
-  if (taom?.imageName) {
-    if (taom.imageName.startsWith("http")) {
-      imageUrl = taom.imageName;
-    } else {
-      try {
-        imageUrl = new URL(`../../assets/${taom.imageName}`, import.meta.url).href;
-      } catch (e) {
-        imageUrl = "/default-food.png"; // Rasm topilmasa default rasm
-      }
+  const handleFavoriteClick = (e) => {
+    e.preventDefault(); 
+    if (!user) {
+      alert("Sevimlilarga qo'shish uchun avval akkauntingizga kiring!"); //
+      return;
     }
-  }
+    toggleFavorite(taom); //
+  };
+
+  // Rasm mantiqi
+  const imageUrl = taom?.imageName 
+    ? new URL(`../../assets/${taom.imageName}`, import.meta.url).href 
+    : "/default-food.png";
 
   return (
     <div className="recipe-card">
-      <div className="image-wrapper" style={{ position: "relative" }}>
+      <div className="image-wrapper">
         <img
           src={imageUrl}
-          alt={taom?.title || "Taom"}
+          alt={taom?.title}
           className="recipe-image"
           onError={(e) => {
-            e.target.src = "https://via.placeholder.com/300x200?text=Retsept+Rasmi";
+            e.target.src = "https://via.placeholder.com/300x200?text=Retsept";
           }}
         />
-        
-        {/* Taom kategoriyasi (Turi) uchun Span */}
+        {/* Kategoriya belgisi */}
         {taom?.category && (
-          <span className="category-span">
-            {taom.category}
-          </span>
+          <span className="category-span">{taom.category}</span>
         )}
       </div>
 
       <div className="recipe-content">
-        <h3 className="recipe-title">{taom?.title || "Noma'lum taom"}</h3>
+        <h3 className="recipe-title">{taom?.title || "Noma'lum"}</h3>
         <p className="recipe-description">
-          {taom?.description ? taom.description.substring(0, 60) + "..." : "Tavsif mavjud emas"}
+          {taom?.description 
+            ? taom.description.substring(0, 60) + "..." 
+            : "Tavsif mavjud emas"}
         </p>
 
         <div className="recipe-footer">
           <span className="recipe-time">🕒 {taom?.time || "---"}</span>
           
           <div className="card-buttons-footer">
-            {/* Sevimlilarga qo'shish tugmasi */}
+            {/* Sevimlilar tugmasi */}
             <button 
               className={`love-btn ${isFavorite ? "active-like" : ""}`} 
-              onClick={() => toggleFavorite(taom)}
-              title="Saralanganlarga qo'shish"
+              onClick={handleFavoriteClick}
             >
-              <img src={LoveIcon} alt="Love" className="love-icon" />
+              <img src={LoveIcon} alt="Like" className="love-icon" />
             </button>
 
-            {/* Batafsil ko'rish tugmasi */}
-            <Link to={`/recipe/${taom?.id}`} style={{ textDecoration: "none" }}>
+            {/* Batafsil sahifaga o'tish */}
+            <Link to={`/recipe/${taom?.id}`}>
               <Button variant="secondary">Ko'rish</Button>
             </Link>
           </div>

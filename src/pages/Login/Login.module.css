@@ -1,18 +1,20 @@
-/* src/pages/Login/Login.module.css */
+/* ASOSIY KONTEYNER */
 .loginContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #f4f4f4;
+  background-color: #f8f9fa; /* Skrinshotdagi kabi och fon */
   padding: 20px;
+  font-family: 'Inter', sans-serif;
 }
 
+/* FORMA DIZAYNI */
 .loginForm {
-  background: white;
+  background: #ffffff;
   padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 24px; /* Yumshoq burchaklar */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
   width: 100%;
   max-width: 400px;
   text-align: center;
@@ -20,45 +22,42 @@
 
 .loginForm h2 {
   margin-bottom: 30px;
-  color: #333;
+  color: #1a1a1a;
+  font-size: 26px;
+  font-weight: 700;
 }
 
+/* INPUT GURUHLARI */
 .inputGroup {
-  text-align: left;
   margin-bottom: 20px;
+  text-align: left;
 }
 
 .inputGroup label {
   display: block;
   margin-bottom: 8px;
-  font-weight: bold;
-  color: #555;
+  font-weight: 600;
+  color: #4a5568;
+  font-size: 14px;
 }
 
 .inputGroup input {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  padding: 12px 16px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
   box-sizing: border-box;
 }
 
-.toggleText {
-  margin-top: 20px;
-  font-size: 0.9rem;
-  color: #777;
+.inputGroup input:focus {
+  border-color: #ff6b6b;
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1);
 }
 
-.toggleText a {
-  color: #ff6b6b;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.toggleText a:hover {
-  text-decoration: underline;
-}
-
+/* PAROLNI KO'RSATISH/YASHIRISH */
 .passwordWrapper {
   position: relative;
   display: flex;
@@ -66,13 +65,89 @@
 }
 
 .passwordWrapper input {
-  padding-right: 40px;
+  padding-right: 45px;
 }
 
 .togglePassword {
   position: absolute;
   right: 15px;
   cursor: pointer;
-  color: #777;
+  font-size: 18px;
   user-select: none;
+  color: #a0aec0;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.togglePassword:hover {
+  color: #ff6b6b;
+}
+
+/* TUGMALAR GURUHI (YONMA-YON) */
+.buttonGroup {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.buttonGroup > * {
+  flex: 1; /* Tugmalar teng kenglikda bo'ladi */
+}
+
+/* BOSH SAHIFA TUGMASI USLUBI */
+.homeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background-color: #f1f5f9;
+  color: #475569;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.homeBtn:hover {
+  background-color: #e2e8f0;
+  color: #1e293b;
+}
+
+/* ERROR MATNI */
+.errorText {
+  background-color: #fff5f5;
+  color: #c53030;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 20px;
+  border-left: 4px solid #f56565;
+}
+
+/* O'TISH MATNI (LINK) */
+.toggleText {
+  margin-top: 25px;
+  font-size: 14px;
+  color: #718096;
+}
+
+.toggleText a {
+  color: #ff6b6b;
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s;
+}
+
+.toggleText a:hover {
+  color: #fa5252;
+  text-decoration: underline;
+}
+
+/* MOBIL QURILMALAR UCHUN */
+@media (max-width: 400px) {
+  .buttonGroup {
+    flex-direction: column;
+  }
 }

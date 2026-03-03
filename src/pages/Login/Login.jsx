@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import { useAuth } from "../../context/AuthContext"; 
-import styles from "./Login.module.css"; // Register.module.css bilan bir xil bo'lishi mumkin
+import styles from "./Login.module.css";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const { login } = useAuth(); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
     const registeredUser = JSON.parse(localStorage.getItem("registeredUser"));
 
     if (
@@ -31,7 +31,7 @@ const Login = () => {
     <div className={styles.loginContainer}>
       <form className={styles.loginForm} onSubmit={handleSubmit}>
         <h2>Tizimga kirish</h2>
-        {error && <p style={{color: "red", textAlign: "center", marginBottom: "10px"}}>{error}</p>}
+        {error && <p className={styles.errorText}>{error}</p>}
         
         <div className={styles.inputGroup}>
           <label>Email</label>
@@ -42,17 +42,30 @@ const Login = () => {
             required 
           />
         </div>
+
         <div className={styles.inputGroup}>
           <label>Parol</label>
-          <input 
-            type="password" 
-            placeholder="Parolni kiriting"
-            onChange={(e) => setFormData({...formData, password: e.target.value})} 
-            required 
-          />
+          <div className={styles.passwordWrapper}>
+            <input 
+              type={showPassword ? "text" : "password"}
+              placeholder="Parolni kiriting"
+              onChange={(e) => setFormData({...formData, password: e.target.value})} 
+              required 
+            />
+            <span 
+              className={styles.togglePassword} 
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? "🙈" : "👁️"}
+            </span>
+          </div>
         </div>
         
-        <Button variant="primary" type="submit">Kirish</Button>
+        <div className={styles.buttonGroup}>
+          <Button variant="primary" type="submit">Kirish</Button>
+          <Link to="/" className={styles.homeBtn}>Bosh sahifa</Link>
+        </div>
+
         <p className={styles.toggleText}>
           Profilingiz yo'qmi? <Link to="/register">Ro'yxatdan o'tish</Link>
         </p>
