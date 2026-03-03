@@ -1,0 +1,91 @@
+.profilePage {
+  background-color: #f0f2f5;
+  min-height: 100vh;
+  padding-bottom: 50px;
+}
+
+.container {
+  max-width: 850px;
+  margin: 30px auto;
+  padding: 0 15px;
+}
+
+.mainCard {
+  background: white;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+  margin-bottom: 40px;
+}
+
+/* Display State */
+.profileDisplay {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.avatarWrapper img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #fff;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.userInfo h1 { font-size: 2rem; margin-bottom: 5px; color: #1a1a1a; }
+.handle { color: #ff6b6b; font-weight: 600; margin-bottom: 5px; }
+.emailText { color: #666; margin-bottom: 20px; }
+
+.editMainBtn {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Edit Form State */
+.editForm h2 { margin-bottom: 25px; font-size: 1.5rem; }
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.inputGroup { display: flex; flex-direction: column; gap: 8px; }
+.inputGroup label { font-size: 0.9rem; font-weight: 600; color: #444; }
+.inputGroup input, .passwordSection input {
+  padding: 12px;
+  border: 1.5px solid #eee;
+  border-radius: 12px;
+  outline: none;
+  background: #fdfdfd;
+}
+
+.passwordSection {
+  background: #fff5f5;
+  padding: 20px;
+  border-radius: 16px;
+  margin: 25px 0;
+}
+
+.sectionHint { font-size: 0.85rem; color: #e74c3c; margin-bottom: 15px; font-weight: 500; }
+
+.formActions { display: flex; gap: 15px; }
+.saveBtn { background: #2d3436; color: white; border: none; padding: 12px 30px; border-radius: 12px; cursor: pointer; font-weight: 600; }
+.cancelBtn { background: #eee; color: #444; border: none; padding: 12px 30px; border-radius: 12px; cursor: pointer; }
+
+/* Recipes Grid */
+.recipesHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.addBtn { text-decoration: none; color: #ff6b6b; font-weight: 700; }
+.recipesGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
+.recipeCard { background: white; border-radius: 18px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+.recipeCard img { width: 100%; height: 160px; object-fit: cover; }
+.recipeContent { padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+.delBtn { background: none; border: none; color: #ff4757; cursor: pointer; font-weight: 600; }

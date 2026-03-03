@@ -22,12 +22,18 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("user");
   };
 
+  // Har qanday yangilanish uchun bitta universal funksiya
+  const updateUserData = (newData) => {
+    const updatedUser = { ...user, ...newData };
+    setUser(updatedUser);
+    localStorage.setItem("user", JSON.stringify(updatedUser));
+  };
+
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, updateUserData }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
-// <-- BU HOOK TO'G'RI YOZILGANIGA ISHONCH HOSIL QILING
 export const useAuth = () => useContext(AuthContext);

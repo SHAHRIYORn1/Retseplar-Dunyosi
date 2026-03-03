@@ -1,131 +1,131 @@
-/* 1. Global reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* 2. NAVBAR */
+/* NAVBAR ASOSIY QISMI */
 .navbar {
+  background-color: #ffffff;
+  height: 80px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
-  background-color: white;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
-  left: 0;
-  width: 100%;
   z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .navbar-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between; /* 3ta blokni chetlarga suradi */
   align-items: center;
-  gap: 1rem;
-  flex-shrink: 0;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 30px;
 }
 
-/* 3. Logo va Brend qismi */
-.logo-container {
+/* 1. BRAND (CHAPDA) */
+.navbar-brand {
+  flex: 0 0 250px; /* Logotip qismi kengligi o'zgarmaydi */
   display: flex;
   align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
   gap: 12px;
 }
 
 .logo-img {
-  height: 40px;
-  width: auto;
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
 }
 
 .brand-name {
-  font-size: 1.5rem;
-  margin: 0;
-  color: #333;
+  font-size: 1.4rem;
+  font-weight: 850;
+  color: #1a1a1a;
+  white-space: nowrap;
 }
 
-.brand-name a {
-  color: black;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.brand-name a:hover {
-  color: #ff6b6b;
-}
-
-/* 4. Menyu ro'yxati */
+/* 2. NAV MENU (MARKAZDA) */
 .nav-menu {
-  flex: 1;
+  flex: 1; /* Markazdagi barcha bo'sh joyni egallaydi */
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Elementlarni o'rtaga yig'adi */
 }
 
 .nav-list {
   display: flex;
-  gap: 25px;
   list-style: none;
+  gap: 30px; /* Elementlar orasidagi masofa */
   margin: 0;
   padding: 0;
+}
+
+.nav-item {
+  position: relative;
+  display: flex;
   align-items: center;
 }
 
 .nav-item a {
   text-decoration: none;
-  color: #555;
-  font-weight: 500;
-  transition: color 0.3s ease;
-  display: flex;
-  align-items: center;
+  color: #444;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
 .nav-item a:hover {
   color: #ff6b6b;
 }
 
-/* 5. User actions (Kirish/Avatar qismi) */
+/* DROPDOWN (KATEGORIYALAR) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%; 
+  left: 70%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  min-width: 200px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  padding: 10px 0;
+  z-index: 1002;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 12px 20px;
+  color: #333;
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #fff1f1;
+  color: #ff6b6b;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* 3. USER ACTIONS (O'NGDA) */
 .user-actions {
+  flex: 0 0 250px; /* O'ng qism kengligi chap bilan bir xil (balans uchun) */
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 15px;
-  flex-shrink: 0;
 }
-
-.user-actions a {
-  text-decoration: none;
-}
-
-/* Login tugmasi */
-.login-btn {
-  padding: 8px 18px;
-  background-color: #ff6b6b;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  font-size: 1rem;
-}
-
-.login-btn:hover {
-  background-color: #e55a5a;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
-}
-
-.login-btn:active {
-  transform: translateY(0);
-}
-
-/* --- YANGI QO'SHILGAN USLUBLAR (AVATAR VA LOGOUT) --- */
 
 .user-menu {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .avatar {
@@ -135,25 +135,34 @@
   color: white;
   border-radius: 50%;
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-weight: bold;
-  font-size: 18px;
-  text-transform: uppercase;
-  border: 2px solid #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  justify-content: center;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.avatar:hover {
+  transform: scale(1.1);
+}
+
+.login-btn, .logout-btn {
+  padding: 10px 22px;
+  border-radius: 25px;
+  font-weight: 700;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+
+.login-btn {
+  background-color: #ff6b6b;
+  color: white;
 }
 
 .logout-btn {
-  padding: 8px 16px;
-  background-color: transparent;
-  color: #ff6b6b;
-  border: 1px solid #ff6b6b;
-  border-radius: 20px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
+  background-color: #f1f3f5;
+  color: #4b4b4b;
 }
 
 .logout-btn:hover {
@@ -161,314 +170,52 @@
   color: white;
 }
 
-/* -------------------------------------------------- */
-
-/* 6. HAMBURGER MENYU */
+/* HAMBURGER (MOBIL) */
 .hamburger {
   display: none;
   flex-direction: column;
-  cursor: pointer;
+  gap: 5px;
   background: none;
   border: none;
-  padding: 5px;
-  gap: 5px;
+  cursor: pointer;
 }
 
 .hamburger span {
   width: 25px;
   height: 3px;
   background-color: #333;
-  border-radius: 2px;
-  transition: all 0.3s ease;
+  border-radius: 3px;
 }
 
-/* Hamburger ochilganda animatsiya */
-.hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(8px, 8px);
-}
-
-.hamburger.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(8px, -8px);
-}
-
-/* ============================== */
-/* TABLET (768px - 1024px) */
-/* ============================== */
-@media (max-width: 1024px) {
-  .navbar {
-    padding: 1rem 1.5rem;
+/* MOBIL MOSLASHUV */
+@media screen and (max-width: 1024px) {
+  .navbar-brand, .user-actions {
+    flex: 1; /* Mobil ekranlarda kenglikni avto qiladi */
   }
 
-  .nav-list {
-    gap: 15px;
-  }
-
-  .nav-item a {
-    font-size: 14px;
-  }
-
-  .logo-img {
-    height: 35px;
-  }
-
-  .brand-name {
-    font-size: 1.3rem;
-  }
-
-  .login-btn, .logout-btn {
-    padding: 7px 15px;
-    font-size: 0.9rem;
-  }
-}
-
-/* ============================== */
-/* MOBILE (max-width: 768px) */
-/* ============================== */
-@media (max-width: 768px) {
-  .navbar {
-    padding: 1rem;
-    flex-wrap: wrap;
-    position: relative;
-  }
-
-  .navbar-container {
-    width: 100%;
-  }
-
-  /* Logo container */
-  .logo-container {
-    gap: 8px;
-  }
-
-  .logo-img {
-    height: 32px;
-  }
-
-  .brand-name {
-    font-size: 1.2rem;
-  }
-
-  /* Hamburger menyu ko'rinadi */
-  .hamburger {
-    display: flex;
-    order: 3;
-  }
-
-  /* Nav menyu vertikal */
   .nav-menu {
-    display: none;
-    flex-direction: column;
+    display: none; /* JS orqali boshqariladigan 'active' klassi bo'lmasa yopiq turadi */
     position: absolute;
-    top: 70px;
+    top: 80px;
     left: 0;
-    right: 0;
     width: 100%;
-    background-color: white;
-    border-bottom: 1px solid #f0f0f0;
-    border-radius: 0 0 8px 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    z-index: 999;
+    background: white;
+    flex-direction: column;
+    padding: 20px 0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
   }
 
-  /* Menyu ochilganda ko'rinadigan qil */
   .nav-menu.active {
     display: flex;
   }
 
   .nav-list {
     flex-direction: column;
-    gap: 0;
-    padding: 1rem 0;
-    width: 100%;
+    align-items: center;
+    gap: 20px;
   }
 
-  .nav-item {
-    padding: 0;
-    border-bottom: 1px solid #f0f0f0;
-  }
-
-  .nav-item:last-child {
-    border-bottom: none;
-  }
-
-  .nav-item a {
-    display: block;
-    padding: 12px 1.5rem;
-    font-size: 14px;
-    width: 100%;
-  }
-
-  .nav-item a:hover {
-    background-color: #f9f9f9;
-  }
-
-  /* User actions mobile */
-  .user-actions {
-    display: none;
-    width: 100%;
-    padding: 1rem;
-    position: absolute;
-    top: auto;
-    bottom: -80px; /* Joyni biroz oshirdik */
-    left: 0;
-    border-top: 1px solid #f0f0f0;
-    justify-content: center;
-    background-color: white;
-    border-radius: 0 0 8px 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Menyu ochilganda tugmalar ko'rinadi */
-  .nav-menu.active + .user-actions {
+  .hamburger {
     display: flex;
   }
-
-  .user-actions a {
-    width: 100%;
-  }
-
-  .login-btn, .logout-btn {
-    width: 100%;
-    padding: 10px 15px;
-    font-size: 0.9rem;
-  }
-}
-
-/* ============================== */
-/* KICHIK MOBILE (max-width: 480px) */
-/* ============================== */
-@media (max-width: 480px) {
-  .navbar {
-    padding: 0.75rem;
-  }
-
-  .navbar-container {
-    gap: 0.5rem;
-  }
-
-  .logo-container {
-    gap: 6px;
-    flex: 1;
-  }
-
-  .logo-img {
-    height: 30px;
-  }
-
-  .brand-name {
-    font-size: 1rem;
-  }
-
-  .hamburger span {
-    width: 22px;
-    height: 2.5px;
-  }
-
-  .nav-menu {
-    top: 65px;
-  }
-
-  .nav-item a {
-    padding: 10px 1rem;
-    font-size: 13px;
-  }
-
-  .user-actions {
-    padding: 0.75rem;
-    bottom: -65px;
-  }
-
-  .login-btn, .logout-btn {
-    padding: 8px 12px;
-    font-size: 0.85rem;
-  }
-}
-
-/* ============================== */
-/* EXTRA KICHIK MOBILE (max-width: 360px) */
-/* ============================== */
-@media (max-width: 360px) {
-  .navbar {
-    padding: 0.5rem;
-  }
-
-  .logo-container {
-    gap: 4px;
-  }
-
-  .logo-img {
-    height: 28px;
-  }
-
-  .brand-name {
-    font-size: 0.9rem;
-  }
-
-  .hamburger span {
-    width: 20px;
-    height: 2px;
-  }
-
-  .nav-item a {
-    padding: 8px 1rem;
-    font-size: 12px;
-  }
-
-  .login-btn, .logout-btn {
-    padding: 6px 10px;
-    font-size: 0.75rem;
-  }
-
-  .user-actions {
-    padding: 0.5rem;
-    bottom: -60px;
-  }
-}
-
-.dropdown {
-  position: relative;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: white;
-  min-width: 180px;
-  box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
-  z-index: 100;
-  border-radius: 8px;
-  top: 100%;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.dropdown-content a {
-  color: #333;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {
-  background-color: #f1f1f1;
-  color: #ff4d4d;
-}
-
-/* Kategoriya spani uchun */
-.category-span {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  background-color: rgba(255, 77, 77, 0.9);
-  color: white;
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: bold;
 }
