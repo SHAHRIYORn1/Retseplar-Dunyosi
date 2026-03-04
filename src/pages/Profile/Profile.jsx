@@ -4,28 +4,34 @@ import Navbar from "../../components/Navbar/Navbar";
 import styles from "./Profile.module.css";
 
 const Profile = () => {
-  const { user, updateUserData, deleteRecipe } = useAuth(); 
+  const { user, updateUserData, deleteRecipe } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [myRecipes, setMyRecipes] = useState([]);
-  
+
   const [formData, setFormData] = useState({
-    fullName: "", avatar: "", email: "", username: "", currentPassword: "", newPassword: ""
+    fullName: "",
+    avatar: "",
+    email: "",
+    username: "",
+    currentPassword: "",
+    newPassword: "",
   });
 
   const loadRecipes = () => {
     const data = JSON.parse(localStorage.getItem("allRecipes")) || [];
-    // O'ziga tegishli retseptlarni filter qilish
-    setMyRecipes(data.filter(r => r.author === user?.username || r.userId === user?.id));
+    setMyRecipes(
+      data.filter((r) => r.author === user?.username || r.userId === user?.id),
+    );
   };
 
   useEffect(() => {
     if (user) {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
         fullName: user.fullName || "",
         avatar: user.avatar || "",
         email: user.email || "",
-        username: user.username || ""
+        username: user.username || "",
       }));
       loadRecipes();
     }
@@ -41,10 +47,13 @@ const Profile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const isSecretChanged = formData.email !== user.email || formData.newPassword !== "";
+    const isSecretChanged =
+      formData.email !== user.email || formData.newPassword !== "";
 
     if (isSecretChanged && formData.currentPassword !== user.password) {
-      alert("Email yoki parolni o'zgartirish uchun joriy parolingizni kiriting!");
+      alert(
+        "Email yoki parolni o'zgartirish uchun joriy parolingizni kiriting!",
+      );
       return;
     }
 
@@ -53,12 +62,12 @@ const Profile = () => {
       avatar: formData.avatar,
       username: formData.username,
       email: formData.email,
-      password: formData.newPassword || user.password
+      password: formData.newPassword || user.password,
     });
 
     alert("Muvaffaqiyatli saqlandi!");
     setIsEditing(false);
-    setFormData(prev => ({...prev, currentPassword: "", newPassword: ""}));
+    setFormData((prev) => ({ ...prev, currentPassword: "", newPassword: "" }));
   };
 
   return (
@@ -69,44 +78,118 @@ const Profile = () => {
           {!isEditing ? (
             <div className={styles.profileDisplay}>
               <div className={styles.avatarWrapper}>
-                {user?.avatar ? <img src={user.avatar} alt="P" /> : 
-                <div className={styles.letterAvatar}>{user?.username?.charAt(0).toUpperCase()}</div>}
+                {user?.avatar ? (
+                  <img src={user.avatar} alt="P" />
+                ) : (
+                  <div className={styles.letterAvatar}>
+                    {user?.username?.charAt(0).toUpperCase()}
+                  </div>
+                )}
               </div>
               <div className={styles.userInfo}>
                 <h1>{user?.fullName || user?.username}</h1>
                 <p className={styles.handle}>@{user?.username}</p>
-                <button onClick={() => setIsEditing(true)} className={styles.editBtn}>Profilni sozlash</button>
+                <button
+                  onClick={() => setIsEditing(true)}
+                  className={styles.editBtn}
+                >
+                  Profilni sozlash
+                </button>
               </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className={styles.editForm}>
               <h2>Tahrirlash</h2>
               <div className={styles.formGrid}>
-                <div className={styles.inputGroup}><label>Ism</label><input type="text" value={formData.fullName} onChange={e => setFormData({...formData, fullName: e.target.value})} /></div>
-                <div className={styles.inputGroup}><label>Username</label><input type="text" value={formData.username} onChange={e => setFormData({...formData, username: e.target.value})} /></div>
-                <div className={styles.inputGroup}><label>Rasm URL</label><input type="text" value={formData.avatar} onChange={e => setFormData({...formData, avatar: e.target.value})} /></div>
-                <div className={styles.inputGroup}><label>Email</label><input type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} /></div>
+                <div className={styles.inputGroup}>
+                  <label>Ism</label>
+                  <input
+                    type="text"
+                    value={formData.fullName}
+                    onChange={(e) =>
+                      setFormData({ ...formData, fullName: e.target.value })
+                    }
+                  />
+                </div>
+                <div className={styles.inputGroup}>
+                  <label>Username</label>
+                  <input
+                    type="text"
+                    value={formData.username}
+                    onChange={(e) =>
+                      setFormData({ ...formData, username: e.target.value })
+                    }
+                  />
+                </div>
+                <div className={styles.inputGroup}>
+                  <label>Rasm URL</label>
+                  <input
+                    type="text"
+                    value={formData.avatar}
+                    onChange={(e) =>
+                      setFormData({ ...formData, avatar: e.target.value })
+                    }
+                  />
+                </div>
+                <div className={styles.inputGroup}>
+                  <label>Email</label>
+                  <input
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                  />
+                </div>
               </div>
               <div className={styles.passwordSection}>
-                <p>Email yoki parolni o'zgartirish uchun joriy parolni tasdiqlang:</p>
-                <input type="password" placeholder="Joriy parol" value={formData.currentPassword} onChange={e => setFormData({...formData, currentPassword: e.target.value})} />
+                <p>
+                  Email yoki parolni o'zgartirish uchun joriy parolni
+                  tasdiqlang:
+                </p>
+                <input
+                  type="password"
+                  placeholder="Joriy parol"
+                  value={formData.currentPassword}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      currentPassword: e.target.value,
+                    })
+                  }
+                />
               </div>
               <div className={styles.formActions}>
-                <button type="submit" className={styles.saveBtn}>Saqlash</button>
-                <button type="button" onClick={() => setIsEditing(false)} className={styles.cancelBtn}>Bekor qilish</button>
+                <button type="submit" className={styles.saveBtn}>
+                  Saqlash
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsEditing(false)}
+                  className={styles.cancelBtn}
+                >
+                  Bekor qilish
+                </button>
               </div>
             </form>
           )}
         </section>
 
-        <h3 className={styles.title}>Mening retseptlarim ({myRecipes.length})</h3>
+        <h3 className={styles.title}>
+          Mening retseptlarim ({myRecipes.length})
+        </h3>
         <div className={styles.recipesGrid}>
-          {myRecipes.map(recipe => (
+          {myRecipes.map((recipe) => (
             <div key={recipe.id} className={styles.recipeCard}>
               <img src={recipe.imageName} alt="" />
               <div className={styles.recipeContent}>
                 <h4>{recipe.title}</h4>
-                <button onClick={() => handleDelete(recipe.id)} className={styles.delBtn}>O'chirish</button>
+                <button
+                  onClick={() => handleDelete(recipe.id)}
+                  className={styles.delBtn}
+                >
+                  O'chirish
+                </button>
               </div>
             </div>
           ))}
