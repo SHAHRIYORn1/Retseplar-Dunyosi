@@ -39,17 +39,31 @@
     "steps": ["Go'shtni qozon tubiga tering", "Sabzavotlarni qatlam-qatlam qilib tering", "Karam barglari bilan yopib, suv quymay dimlang", "2 soat past olovda pishiring"]
   },
   {
-    "id": "4",
-    "title": "Chuchvara",
-    "category": "Milliy Taomlar",
-    "description": "Cho'zilgan xamir va mazali qayla bilan tayyorlanadigan milliy taom.",
-    "imageName": "lag'mon.jpg",
-    "time": "90 daqiqa",
-    "servings": "4",
-    "difficulty": "Qiyin",
-    "ingredients": ["400g un", "1 dona tuxum", "300g qiyma", "2 dona piyoz"],
-    "steps": ["Xamirni juda yupqa qilib yoying", "Kichik kvadratlar kesib, ichiga qiyma solib tuging", "Qaynoq suvda yoki bulyonda pishiring"]
-  },
+  "id": "4",
+  "title": "Shakarob (Achchiq-chuchuk)",
+  "category": "Salatlar",
+  "subCategory": "Vitaminli",
+  "description": "Osh va boshqa quyuq taomlar bilan birga tortiladigan, pomidor va piyozdan tayyorlanadigan eng mashhur o'zbek salati.",
+  "imageName": "shakarob.jpg",
+  "time": "10 daqiqa",
+  "servings": "4",
+  "difficulty": "Juda oddiy",
+  "ingredients": [
+    "4 dona qizil va pishgan pomidor",
+    "2 dona o'rtacha piyoz",
+    "1 dona achchiq qalampir (xohishga ko'ra)",
+    "Yarim bog' rayhon yoki ko'k piyoz",
+    "Tuz va murch ta'mga ko'ra"
+  ],
+  "steps": [
+    "Piyozni artib, sovuq suvda chayib oling va pichoq yordamida juda yupqa yarim halqa shaklida to'g'rang.",
+    "Pomidorlarni yuvib, ularni ham imkon qadar yupqa parrak qilib to'g'rang. Shakarobning mazali chiqishi pomidorning yupqa to'g'ralishiga bog'liq.",
+    "Achchiq qalampirni urug'idan tozalab, mayda qilib to'g'rang.",
+    "To'g'ralgan pomidor, piyoz va qalampirni chuqur idishga soling.",
+    "Tuz, murch va to'g'ralgan ko'katlarni qo'shib, pomidorlar ezilib ketmasligi uchun ehtiyotkorlik bilan qo'lda yoki qoshiqda aralashtiring.",
+    "Tayyor salatni darhol dasturxonga torting, chunki pomidor ko'p tursa suvi chiqib ketadi."
+  ]
+},
   {
     "id": "5",
     "title": "Lag'mon",
