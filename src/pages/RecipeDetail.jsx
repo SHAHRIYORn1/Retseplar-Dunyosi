@@ -1,82 +1,94 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import styles from "./RecipeDetail.module.css";
 import taomlarJSON from "../toamlar.json";
+import styles from "./RecipeDetail.module.css";
+
+// Rasmlarni dinamik yuklash
+const assetImages = import.meta.glob("../assets/*.{png,jpg,jpeg,webp}", { eager: true });
 
 const RecipeDetail = () => {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
 
   useEffect(() => {
-    // 1. Ma'lumotlarni birlashtirish (JSON + LocalStorage)
+    // LocalStorage va JSON ma'lumotlarini birlashtirish
     const localRecipes = JSON.parse(localStorage.getItem("allRecipes")) || [];
     const allCombinedData = [...taomlarJSON, ...localRecipes];
-
-    // 2. ID bo'yicha qidirish
-    const foundRecipe = allCombinedData.find((item) => item.id === id);
+    const foundRecipe = allCombinedData.find((item) => String(item.id) === String(id));
     setRecipe(foundRecipe);
   }, [id]);
 
+  // Agar taom topilmasa
   if (!recipe) {
     return (
-      <div className={styles.recipeDetailContainer}>
-        <h1 className={styles.notFound}>Taom topilmadi</h1>
-        <Link to="/" className={styles.backButton}>Bosh sahifaga qaytish</Link>
+      <div className={styles.notFound}>
+        <h1>Taom topilmadi</h1>
+        <Link to="/" className={styles.backButton}>Orqaga qaytish</Link>
       </div>
     );
   }
 
-  // Rasm mantiqi: Agar URL bo'lsa o'zini, bo'lmasa assets'dan oladi
+  // Rasm manzilini aniqlash funksiyasi
   const getImageUrl = () => {
+    if (!recipe.imageName) return null;
     if (recipe.imageName.startsWith("http")) return recipe.imageName;
-    try {
-      return new URL(`../../assets/${recipe.imageName}`, import.meta.url).href;
-    } catch {
-      return "/osh.jpg"; // Default rasm
-    }
+    const path = `../assets/${recipe.imageName}`;
+    return assetImages[path] ? assetImages[path].default : null;
   };
+
+  const finalSrc = getImageUrl();
 
   return (
     <div className={styles.recipeDetailContainer}>
-      <div className={styles.detailHeader}>
+      {/* Header qismi */}
+      <header className={styles.detailHeader}>
         <Link to="/all-recipes" className={styles.backButton}>
           ← Orqaga qaytish
         </Link>
         <h1>{recipe.title}</h1>
-        <p className={styles.description}>{recipe.description}</p>
-      </div>
+        <p className={styles.description}>
+          Ushbu ajoyib taomning tayyorlanish jarayoni va kerakli masalliqlar bilan tanishing.
+        </p>
+      </header>
 
+      {/* Rasm va Meta ma'lumotlar */}
       <div className={styles.detailInfoGrid}>
-        <img src={getImageUrl()} alt={recipe.title} className={styles.mainImage} />
+        <img 
+          src={finalSrc || "https://via.placeholder.com/600x400?text=Rasm+Topilmadi"} 
+          alt={recipe.title} 
+          className={styles.mainImage}
+        />
+        
         <div className={styles.metaBox}>
-          <p>🕒 Tayyorlanish vaqti: {recipe.time}</p>
-          <p>🍽 Porsiya: {recipe.servings} kishilik</p>
-          <p>👨‍🍳 Murakkablik: {recipe.difficulty}</p>
-          <p>📂 Kategoriya: {recipe.category}</p>
+          <p>🕒 <strong>Vaqt:</strong> {recipe.time}</p>
+          <p>🍽 <strong>Porsiya:</strong> {recipe.servings} kishilik</p>
+          <p>📂 <strong>Kategoriya:</strong> {recipe.category}</p>
         </div>
       </div>
 
-      <div className={styles.infoBox}>
-        <h2>Masalliqlar:</h2>
+      {/* Masalliqlar bo'limi */}
+      <section className={styles.infoBox}>
+        <h2>Masalliqlar</h2>
         <ul>
-          {recipe.ingredients && recipe.ingredients.map((item, index) => (
+          {recipe.ingredients?.map((item, index) => (
             <li key={index}>
-              <input type="checkbox" style={{ marginRight: "10px" }} />
-              {item}
+              <input type="checkbox" id={`ing-${index}`} />
+              <label htmlFor={`ing-${index}`}>{item}</label>
             </li>
           ))}
         </ul>
-      </div>
+      </section>
 
-      <div className={styles.infoBox}>
-        <h2>Tayyorlanishi:</h2>
-        {recipe.steps && recipe.steps.map((step, index) => (
-          <p key={index} className={styles.stepItem}>
+      {/* Tayyorlanish bosqichlari bo'limi */}
+      <section className={styles.infoBox}>
+        <h2>Tayyorlanish bosqichlari</h2>
+        {recipe.steps?.map((step, index) => (
+          <p key={index}>
             <span className={styles.stepNumber}>{index + 1}</span>
             {step}
           </p>
         ))}
-      </div>
+      </section>
     </div>
   );
 };

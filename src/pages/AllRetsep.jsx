@@ -1,65 +1,63 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import Navbar from "../components/Navbar/Navbar";
-import RecipeCard from "../components/RecipeCard/RecipeCard";
-import Footer from "../components/Footer/Footer";
-import taomlarJSON from "../toamlar.json"; 
+import { useSearchParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import Navbar from "../components/Navbar/Navbar.jsx";
+import RecipeCard from "../components/RecipeCard/RecipeCard.jsx"; // Tayyor komponentingiz
+import recipesData from "../toamlar.json"; 
 
-const AllRetsep = () => {
-    const [filteredData, setFilteredData] = useState([]);
-    const location = useLocation();
+const AllRecipes = () => {
+  const { t } = useTranslation();
+  const [searchParams] = useSearchParams();
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
 
-    useEffect(() => {
-        // 1. JSON va LocalStorage ma'lumotlarini birlashtirish
-        const localRecipes = JSON.parse(localStorage.getItem("allRecipes")) || [];
-        const allCombinedData = [...taomlarJSON, ...localRecipes];
+  const catParam = searchParams.get("cat");
+  const subParam = searchParams.get("sub");
 
-        // 2. Qidiruv va Filtr mantiqi
-        const params = new URLSearchParams(location.search);
-        const searchQuery = params.get("search")?.toLowerCase() || "";
-        const catQuery = params.get("cat") || "";
+  useEffect(() => {
+    let result = recipesData;
+    if (catParam) result = result.filter(r => r.category === catParam);
+    if (subParam) result = result.filter(r => r.subCategory === subParam);
+    setFilteredRecipes(result);
+  }, [catParam, subParam]);
 
-        let results = allCombinedData;
+  const getPageTitle = () => {
+    if (subParam) return subParam;
+    if (catParam) return catParam;
+    return t("all_recipes");
+  };
 
-        if (searchQuery) {
-            results = results.filter(taom => 
-                taom.title.toLowerCase().includes(searchQuery) || 
-                taom.category?.toLowerCase().includes(searchQuery)
-            );
-        }
+  return (
+    <div className="all-recipes-page">
+      <Navbar />
+      <main style={{ padding: "48px 20px", maxWidth: "1280px", margin: "0 auto" }}>
+        <h1 style={{ 
+          marginBottom: "30px", 
+          borderBottom: "2px solid #eee", 
+          paddingBottom: "10px",
+          color: "#333" 
+        }}>
+          {getPageTitle()}
+        </h1>
 
-        if (catQuery) {
-            results = results.filter(taom => taom.category === catQuery);
-        }
-
-        setFilteredData(results);
-    }, [location.search]);
-
-    return (  
-        <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-            <Navbar />
-            <main style={{ padding: "40px 20px", flex: 1, backgroundColor: "#f9f9f9" }}>
-                <h2 style={{ textAlign: "center", marginBottom: "40px", fontSize: "2rem", color: "#333" }}>
-                    {new URLSearchParams(location.search).get("cat") || "Barcha Retseptlar"}
-                </h2>
-
-                <div style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
-                    gap: "30px",
-                    maxWidth: "1200px",
-                    margin: "0 auto",
-                }}>
-                    {filteredData.length > 0 ? (
-                        filteredData.map((taom) => <RecipeCard key={taom.id} taom={taom} />)
-                    ) : (
-                        <p style={{ textAlign: "center", gridColumn: "1/-1" }}>Hech narsa topilmadi.</p>
-                    )}
-                </div>
-            </main>
-            <Footer />
+        <div className="recipes-grid" style={{ 
+          display: "grid", 
+          gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", 
+          gap: "30px" 
+        }}>
+          {filteredRecipes.length > 0 ? (
+            filteredRecipes.map((recipe) => (
+              /* SIZNING TAYYOR KOMPONENTINGIZ */
+              <RecipeCard key={recipe.id} taom={recipe} />
+            ))
+          ) : (
+            <div style={{ textAlign: "center", width: "100%", padding: "50px" }}>
+              <h3>😕 {t("no_recipes_found") || "Hech qanday retsept topilmadi."}</h3>
+            </div>
+          )}
         </div>
-    );
+      </main>
+    </div>
+  );
 };
 
-export default AllRetsep;
+export default AllRecipes;
