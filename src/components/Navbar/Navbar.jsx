@@ -23,7 +23,7 @@ const Navbar = () => {
     if (user) {
       navigate(path);
     } else {
-      alert(t("auth_error"));
+      alert(t("auth_error") || "Tizimga kiring!");
       navigate("/login");
     }
   };
@@ -32,6 +32,7 @@ const Navbar = () => {
     <header className="navbar">
       <div className="navbar-container">
         
+        {/* BRAND */}
         <div className="navbar-brand">
           <Link to="/" onClick={closeMenu} className="logo-link">
             <img src="/logo.png" alt="Logo" className="logo-img" />
@@ -39,35 +40,69 @@ const Navbar = () => {
           </Link>
         </div>
 
+        {/* NAV MENU */}
         <nav className={`nav-menu ${isMenuOpen ? "active" : ""}`}>
           <ul className="nav-list">
             <li className="nav-item">
               <Link to="/" onClick={closeMenu}>{t("home")}</Link>
             </li>
 
+            {/* BARCHA RETSEPTLAR + NESTED DROPDOWN */}
             <li className="nav-item dropdown">
-              <Link to="/all-recipes" className="dropbtn" onClick={closeMenu}>
+              <Link to="/all-recipes" className="dropbtn">
                 {t("all_recipes")} ▾
               </Link>
-              <div className="dropdown-content">
-                <Link to="/all-recipes?cat=Milliy Taomlar" onClick={closeMenu}>{t("cat_national")}</Link>
-                <Link to="/all-recipes?cat=FastFood" onClick={closeMenu}>{t("cat_fastfood")}</Link>
-                <Link to="/all-recipes?cat=Salatlar" onClick={closeMenu}>{t("cat_salads")}</Link>
-                <Link to="/all-recipes?cat=Shirinliklar" onClick={closeMenu}>{t("cat_sweets")}</Link>
-              </div>
+              <ul className="dropdown-content">
+                
+                {/* Milliy Taomlar + Submenu */}
+                <li className="has-submenu">
+                  <Link to="/all-recipes?cat=Milliy Taomlar">{t("cat_national")} <span className="arrow">▸</span></Link>
+                  <ul className="submenu">
+                    <li><Link to="/all-recipes?sub=Suyuq" onClick={closeMenu}>Suyuq taomlar</Link></li>
+                    <li><Link to="/all-recipes?sub=Quyuq" onClick={closeMenu}>Quyuq taomlar</Link></li>
+                    <li><Link to="/all-recipes?sub=Semirish uchun" onClick={closeMenu}>Semirish uchun</Link></li>
+                    <li><Link to="/all-recipes?sub=Ozish uchun" onClick={closeMenu}>Ozish uchun</Link></li>
+                  </ul>
+                </li>
+
+                {/* Fast Food + Submenu */}
+                <li className="has-submenu">
+                  <Link to="/all-recipes?cat=FastFood">{t("cat_fastfood")} <span className="arrow">▸</span></Link>
+                  <ul className="submenu">
+                    <li><Link to="/all-recipes?sub=Mayonezsiz" onClick={closeMenu}>Mayonezsiz</Link></li>
+                    <li><Link to="/all-recipes?sub=Burgerlar" onClick={closeMenu}>Burgerlar</Link></li>
+                    <li><Link to="/all-recipes?sub=Pitsalar" onClick={closeMenu}>Pitsalar</Link></li>
+                  </ul>
+                </li>
+
+                {/* Salatlar + Submenu */}
+                <li className="has-submenu">
+                  <Link to="/all-recipes?cat=Salatlar">{t("cat_salads")} <span className="arrow">▸</span></Link>
+                  <ul className="submenu">
+                    <li><Link to="/all-recipes?sub=Vitaminli" onClick={closeMenu}>Vitaminli</Link></li>
+                    <li><Link to="/all-recipes?sub=Parhez" onClick={closeMenu}>Parhezbop</Link></li>
+                  </ul>
+                </li>
+
+                <li className="has-submenu">
+  <Link to="/all-recipes?cat=Shirinliklar">{t("cat_sweets")} <span className="arrow">▸</span></Link>
+  <ul className="submenu">
+    <li><Link to="/all-recipes?sub=Pishiriqlar" onClick={closeMenu}>Pishiriqlar</Link></li>
+    <li><Link to="/all-recipes?sub=Tortlar" onClick={closeMenu}>Tortlar</Link></li>
+    <li><Link to="/all-recipes?sub=Muzqaymoq" onClick={closeMenu}>Muzqaymoqlar</Link></li>
+  </ul>
+</li>
+              </ul>
             </li>
 
             <li className="nav-item">
               <a href="/favorites" onClick={(e) => handleProtectedNavigation(e, "/favorites")}>{t("favorites")}</a>
             </li>
-            <li className="nav-item">
-              <a href="/add-recipe" onClick={(e) => handleProtectedNavigation(e, "/add-recipe")}>{t("add_recipe")}</a>
-            </li>
           </ul>
         </nav>
 
+        {/* USER ACTIONS */}
         <div className="user-actions">
-          {/* UCHTA TIL TUGMASI */}
           <div className="lang-switcher">
             <button onClick={() => changeLanguage("uz")} className={i18n.language === 'uz' ? 'active-lang' : ''}>UZ</button>
             <button onClick={() => changeLanguage("ru")} className={i18n.language === 'ru' ? 'active-lang' : ''}>RU</button>
@@ -89,7 +124,7 @@ const Navbar = () => {
             </Link>
           )}
 
-          <button className={`hamburger ${isMenuOpen ? "active" : ""}`} onClick={toggleMenu}>
+          <button className="hamburger" onClick={toggleMenu}>
             <span></span><span></span><span></span>
           </button>
         </div>
