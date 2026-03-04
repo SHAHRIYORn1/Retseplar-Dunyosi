@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { AuthProvider } from "./context/AuthContext"; // AuthContext.jsx yoki .js
 import "./index.css"; // Global uslublar
+import './i18n';
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
