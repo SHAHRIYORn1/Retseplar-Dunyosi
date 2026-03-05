@@ -2,7 +2,7 @@ import React from "react";
 import Hero from "../components/Hero/Hero";
 import RecipeCard from "../components/RecipeCard/RecipeCard";
 import Footer from "../components/Footer/Footer";
-import taomlar from "../toamlar.json";
+import taomlar from "../taomlar.json";
 import Navbar from "../components/Navbar/Navbar";
 
 const Home = () => {

@@ -158,3 +158,50 @@
     padding: 15px;
   }
 }
+
+.recipe-header-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.difficulty-badge {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background: #f0f0f0;
+}
+
+/* Murakkablik ranglari */
+.difficulty-badge.oddiy,
+.difficulty-badge.juda-oddiy {
+  color: #27ae60;
+  background: #eafaf1;
+}
+.difficulty-badge.ortacha {
+  color: #f39c12;
+  background: #fef5e7;
+}
+.difficulty-badge.qiyin,
+.difficulty-badge.juda-qiyin {
+  color: #e74c3c;
+  background: #fdedec;
+}
+
+.recipe-extra-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #7f8c8d;
+  margin: 10px 0;
+  border-bottom: 1px dashed #eee;
+  padding-bottom: 8px;
+}
+
+.sub-category-text {
+  font-style: italic;
+  color: #3498db;
+}

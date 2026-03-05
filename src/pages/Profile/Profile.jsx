@@ -174,7 +174,6 @@ const Profile = () => {
             </form>
           )}
         </section>
-
       </div>
     </div>
   );
