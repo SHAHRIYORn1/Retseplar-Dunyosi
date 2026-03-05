@@ -1,0 +1,321 @@
+[
+  {
+    "id": "1",
+    "title": "Toshkent Palovi",
+    "category": "Milliy Taomlar",
+    "subCategory": "Quyuq",
+    "description": "Sarimsoq va noxat qo'shilgan haqiqiy to'y oshi.",
+    "imageName": "osh.jpg",
+    "time": "120 daqiqa",
+    "servings": "6",
+    "difficulty": "O'rtacha",
+    "ingredients": [
+      "1 kg guruch",
+      "1 kg go'sht",
+      "1 kg sabzi",
+      "2 dona piyoz",
+      "100g noxat",
+      "Zira, tuz"
+    ],
+    "steps": [
+      "Go'shtni qizigan yog'da qovuring",
+      "Piyoz va sabzini solib qovurishda davom eting",
+      "Suv quyib, noxatni solib 40 daqiqa qaynating",
+      "Guruchni solib, suvini tortgach 20 daqiqa damlang"
+    ]
+  },
+  {
+    "id": "2",
+    "title": "Manti",
+    "category": "Milliy Taomlar",
+    "subCategory": "Quyuq",
+    "description": "Yubqa xamir va mayda to'g'ralgan go'shtdan tayyorlangan taom.",
+    "imageName": "manti.jpg",
+    "time": "90 daqiqa",
+    "servings": "4",
+    "difficulty": "O'rtacha",
+    "ingredients": [
+      "500g un",
+      "200ml suv",
+      "500g qiyma",
+      "4 dona piyoz",
+      "Tuz, murch"
+    ],
+    "steps": [
+      "Xamir qoring va 30 daqiqa tindiring",
+      "Go'sht va piyozni mayda to'g'rab qiyma tayyorlang",
+      "Xamirni yoyib, kvadrat shaklda kesib tuging",
+      "Qasqonda 45 daqiqa pishiring"
+    ]
+  },
+  {
+    "id": "3",
+    "title": "Dimlama",
+    "category": "Milliy Taomlar",
+    "subCategory": "Semirish uchun",
+    "description": "Go'sht va sabzavotlarning o'z sharbatida pishishi.",
+    "imageName": "dimlama.jpg",
+    "time": "120 daqiqa",
+    "servings": "5",
+    "difficulty": "Oddiy",
+    "ingredients": [
+      "700g go'sht",
+      "1kg kartoshka",
+      "3 dona sabzi",
+      "2 dona karam",
+      "Bulg'or qalampiri"
+    ],
+    "steps": [
+      "Go'shtni qozon tubiga tering",
+      "Sabzavotlarni qatlam-qatlam qilib tering",
+      "Karam barglari bilan yopib, suv quymay dimlang",
+      "2 soat past olovda pishiring"
+    ]
+  },
+  {
+    "id": "4",
+    "title": "Shakarob (Achchiq-chuchuk)",
+    "category": "Salatlar",
+    "subCategory": "Vitaminli",
+    "description": "Osh va boshqa quyuq taomlar bilan birga tortiladigan, pomidor va piyozdan tayyorlanadigan eng mashhur o'zbek salati.",
+    "imageName": "shakarob.jpg",
+    "time": "10 daqiqa",
+    "servings": "4",
+    "difficulty": "Juda oddiy",
+    "ingredients": [
+      "4 dona qizil va pishgan pomidor",
+      "2 dona o'rtacha piyoz",
+      "1 dona achchiq qalampir (xohishga ko'ra)",
+      "Yarim bog' rayhon yoki ko'k piyoz",
+      "Tuz va murch ta'mga ko'ra"
+    ],
+    "steps": [
+      "Piyozni artib, sovuq suvda chayib oling va pichoq yordamida juda yupqa yarim halqa shaklida to'g'rang.",
+      "Pomidorlarni yuvib, ularni ham imkon qadar yupqa parrak qilib to'g'rang. Shakarobning mazali chiqishi pomidorning yupqa to'g'ralishiga bog'liq.",
+      "Achchiq qalampirni urug'idan tozalab, mayda qilib to'g'rang.",
+      "To'g'ralgan pomidor, piyoz va qalampirni chuqur idishga soling.",
+      "Tuz, murch va to'g'ralgan ko'katlarni qo'shib, pomidorlar ezilib ketmasligi uchun ehtiyotkorlik bilan qo'lda yoki qoshiqda aralashtiring.",
+      "Tayyor salatni darhol dasturxonga torting, chunki pomidor ko'p tursa suvi chiqib ketadi."
+    ]
+  },
+  {
+    "id": "5",
+    "title": "Lag'mon",
+    "category": "Milliy Taomlar",
+    "subCategory": "Quyuq",
+    "description": "Cho'zma xamir va quyuq qaylali shohona taom.",
+    "imageName": "lag'mon.jpg",
+    "time": "120 daqiqa",
+    "servings": "4",
+    "difficulty": "Qiyin",
+    "ingredients": [
+      "1kg un",
+      "500g go'sht",
+      "Kartoshka, sabzi",
+      "Jandur, turp"
+    ],
+    "steps": [
+      "Xamirni cho'zib tayyorlang va pishirib oling",
+      "Go'sht va sabzavotlardan quyuq qayla tayyorlang",
+      "Kasalarga xamirni suzib, ustidan qaylasini quying"
+    ]
+  },
+  {
+    "id": "6",
+    "title": "Norin",
+    "category": "Milliy Taomlar",
+    "subCategory": "Quyuq",
+    "description": "Yupqa kesilgan xamir va ot go'shti (qazi).",
+    "imageName": "norin.jpeg",
+    "time": "180 daqiqa",
+    "servings": "6",
+    "difficulty": "Juda qiyin",
+    "ingredients": ["1kg un", "500g go'sht", "200g qazi", "Zira, murch"],
+    "steps": [
+      "Xamirni pishirib, sovitib oling",
+      "Xamirni va go'shtni juda mayda (poxoldek) to'g'rang",
+      "Zira va murch qo'shib aralashtiring"
+    ]
+  },
+  {
+    "id": "7",
+    "title": "Chuchvara",
+    "category": "Milliy Taomlar",
+    "subCategory": "Suyuq",
+    "description": "Kichik shaklda tugilgan, sho'rvasi bilan tortiq qilinadigan taom.",
+    "imageName": "chuchvara.jpg",
+    "time": "70 daqiqa",
+    "servings": "4",
+    "difficulty": "Juda oddiy",
+    "ingredients": [
+      "4 dona pomidor",
+      "2 dona piyoz",
+      "Tuz, achchiq murch",
+      "Rayhon"
+    ],
+    "steps": [
+      "Pomidor va piyozni juda yupqa qilib to'g'rang",
+      "Tuz va murch qo'shib ehtiyotkorlik bilan aralashtiring"
+    ]
+  },
+  {
+    "id": "8",
+    "title": "Shashlik",
+    "category": "Milliy Taomlar",
+    "subCategory": "Semirish uchun",
+    "description": "Cho'g'da pishirilgan yumshoq qo'y go'shti.",
+    "imageName": "shashlik.jpg",
+    "time": "45 daqiqa",
+    "servings": "4",
+    "difficulty": "Oddiy",
+    "ingredients": [
+      "1kg go'sht",
+      "150g dumba yog'i",
+      "3 dona piyoz",
+      "Ziravorlar"
+    ],
+    "steps": [
+      "Go'shtni piyoz va ziravorlar bilan marinovka qiling",
+      "Sihga navbatma-navbat tering",
+      "Qizigan cho'g'da aylantirib pishiring"
+    ]
+  },
+  {
+    "id": "9",
+    "title": "Somsa",
+    "category": "Milliy Taomlar",
+    "subCategory": "Quyuq",
+    "description": "Qatlamli xamirdan tayyorlangan pech somsasi.",
+    "imageName": "somsa.png",
+    "time": "60 daqiqa",
+    "servings": "10 dona",
+    "difficulty": "O'rtacha",
+    "ingredients": ["800g un", "400g sariyog'", "500g go'sht", "400g piyoz"],
+    "steps": [
+      "Qavatli xamir tayyorlang",
+      "Go'sht va piyozdan qiyma tayyorlab xamirga tuging",
+      "200 gradus issiqlikda qizarguncha pishiring"
+    ]
+  },
+  {
+    "id": "10",
+    "title": "Tuxum Barak",
+    "category": "Milliy Taomlar",
+    "subCategory": "Xorazmcha",
+    "description": "Xorazm vohasining eng mashhur, ozuqaviy qiymati yuqori bo'lgan suyuq xamir taomi.",
+    "imageName": "barak.jpg",
+    "time": "50 daqiqa",
+    "servings": "4",
+    "difficulty": "Qiyin",
+    "ingredients": [
+      "500g un",
+      "10 dona tuxum",
+      "200ml sut",
+      "100g sariyog'",
+      "Tuz, murch"
+    ],
+    "steps": [
+      "Xamirdan kichik konvertchalar yasab oling.",
+      "Tuxum, sut va ziravorlarni aralashtirib ichiga quyiladigan massa tayyorlang.",
+      "Konvertchalarni ichiga tuxumli massani quyib, darhol qaynab turgan suvga soling.",
+      "Suv yuzasiga qalqib chiqqach, yana 2-3 daqiqa qaynatib oling."
+    ]
+  },
+  {
+    "id": "11",
+    "title": "Klassik Burger",
+    "category": "Fast Food",
+    "subCategory": "Tezkor",
+    "description": "Uy sharoitida tayyorlanadigan sershira kotletli va maxsus sousli burger.",
+    "imageName": "burger.jpg",
+    "time": "30 daqiqa",
+    "servings": "2",
+    "difficulty": "Oddiy",
+    "ingredients": [
+      "2 dona burger noni",
+      "300g mol go'shti qiymasi",
+      "2 bo'lak pishloq",
+      "Pomidor, tuzlangan bodring",
+      "Lettuce bargi"
+    ],
+    "steps": [
+      "Qiymadan dumaloq kotletlar yasab, tavada ikki tomonini qovuring.",
+      "Nonlarni o'rtasidan bo'lib, biroz qizitib oling.",
+      "Non ustiga sous surting, ketma-ketlikda go'sht, pishloq va sabzavotlarni tering.",
+      "Ustki qismini yopib, issiqligida tortiq qiling."
+    ]
+  },
+  {
+    "id": "12",
+    "title": "Mastava",
+    "category": "Milliy Taomlar",
+    "subCategory": "Suyuq",
+    "description": "Guruchli va sabzavotli, juda to'yimli o'zbek milliy sho'rvasi.",
+    "imageName": "mastava.jpg",
+    "time": "60 daqiqa",
+    "servings": "5",
+    "difficulty": "O'rtacha",
+    "ingredients": [
+      "300g go'sht",
+      "150g guruch",
+      "2 dona kartoshka",
+      "1 dona sabzi",
+      "1 dona piyoz",
+      "Qatiq (tartiq qilish uchun)"
+    ],
+    "steps": [
+      "Go'sht va sabzavotlarni mayda to'rtburchak shaklda to'g'rang va qovuring.",
+      "Suv quyib qaynatishga qo'ying.",
+      "Suv qaynagach, yuvilgan guruchni soling va pishguncha qaynating.",
+      "Tayyor taomni kosa ustiga qatiq va murch sepib torting."
+    ]
+  },
+  {
+    "id": "13",
+    "title": "Uy Pizzasi",
+    "category": "Fast Food",
+    "subCategory": "Yevropa",
+    "description": "Yupqa xamirli, mo'l pishloqli va kolbasali italyancha lazzat.",
+    "imageName": "pizza.jpg",
+    "time": "40 daqiqa",
+    "servings": "6 bo'lak",
+    "difficulty": "O'rtacha",
+    "ingredients": [
+      "300g un",
+      "1 choy qoshiq xamirturush",
+      "200g pishloq (Mozzarella)",
+      "100g kolbasa",
+      "Zaytun, pomidor sousi"
+    ],
+    "steps": [
+      "Xamirni tayyorlab, 20 daqiqa tindiring va yupqa qilib yoying.",
+      "Ustiga pomidor sousini surting.",
+      "Pishloq, kolbasa va boshqa masalliqlarni tekis qilib tering.",
+      "220 gradusda 10-15 daqiqa davomida pishirib oling."
+    ]
+  },
+  {
+    "id": "14",
+    "title": "Shokoladli Tort",
+    "category": "Shirinliklar",
+    "subCategory": "Desert",
+    "description": "Yumshoq biskvit va mayin shokoladli kremdan iborat bayramona tort.",
+    "imageName": "tort.jpg",
+    "time": "120 daqiqa",
+    "servings": "8",
+    "difficulty": "Qiyin",
+    "ingredients": [
+      "5 dona tuxum",
+      "1 stakan shakar",
+      "1 stakan un",
+      "3 osh qoshiq kakao",
+      "300ml qaymoq (krem uchun)"
+    ],
+    "steps": [
+      "Tuxum va shakarni ko'pirtirib, un va kakao qo'shing va pishirib oling.",
+      "Tayyor biskvitni qatlamlarga bo'ling.",
+      "Qaymoq va shakarni ko'pirtirib krem tayyorlang.",
+      "Qatlamlar orasiga krem surtib, ustini shokolad bilan bezating."
+    ]
+  }
+]
