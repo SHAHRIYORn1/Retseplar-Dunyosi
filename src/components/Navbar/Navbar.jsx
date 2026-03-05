@@ -17,6 +17,13 @@ const Navbar = () => {
     i18n.changeLanguage(lng);
   };
 
+  const handleLogout = () => {
+    logout(); 
+    localStorage.removeItem("isAdmin");
+    closeMenu();
+    navigate("/login");
+  };
+
   const handleProtectedNavigation = (e, path) => {
     e.preventDefault();
     closeMenu();
@@ -26,6 +33,12 @@ const Navbar = () => {
       alert(t("auth_error") || "Tizimga kiring!");
       navigate("/login");
     }
+  };
+
+  const getInitial = () => {
+    if (!user) return "";
+    const name = user.username || user.fullName || "Admin";
+    return name.charAt(0).toUpperCase();
   };
 
   return (
@@ -53,8 +66,7 @@ const Navbar = () => {
                 {t("all_recipes")} ▾
               </Link>
               <ul className="dropdown-content">
-                
-                {/* Milliy Taomlar + Submenu */}
+                {/* Milliy Taomlar */}
                 <li className="has-submenu">
                   <Link to="/all-recipes?cat=Milliy Taomlar">{t("cat_national")} <span className="arrow">▸</span></Link>
                   <ul className="submenu">
@@ -65,7 +77,7 @@ const Navbar = () => {
                   </ul>
                 </li>
 
-                {/* Fast Food + Submenu */}
+                {/* Fast Food */}
                 <li className="has-submenu">
                   <Link to="/all-recipes?cat=FastFood">{t("cat_fastfood")} <span className="arrow">▸</span></Link>
                   <ul className="submenu">
@@ -75,7 +87,7 @@ const Navbar = () => {
                   </ul>
                 </li>
 
-                {/* Salatlar + Submenu */}
+                {/* Salatlar */}
                 <li className="has-submenu">
                   <Link to="/all-recipes?cat=Salatlar">{t("cat_salads")} <span className="arrow">▸</span></Link>
                   <ul className="submenu">
@@ -84,14 +96,15 @@ const Navbar = () => {
                   </ul>
                 </li>
 
+                {/* Shirinliklar */}
                 <li className="has-submenu">
-  <Link to="/all-recipes?cat=Shirinliklar">{t("cat_sweets")} <span className="arrow">▸</span></Link>
-  <ul className="submenu">
-    <li><Link to="/all-recipes?sub=Pishiriqlar" onClick={closeMenu}>Pishiriqlar</Link></li>
-    <li><Link to="/all-recipes?sub=Tortlar" onClick={closeMenu}>Tortlar</Link></li>
-    <li><Link to="/all-recipes?sub=Muzqaymoq" onClick={closeMenu}>Muzqaymoqlar</Link></li>
-  </ul>
-</li>
+                  <Link to="/all-recipes?cat=Shirinliklar">{t("cat_sweets")} <span className="arrow">▸</span></Link>
+                  <ul className="submenu">
+                    <li><Link to="/all-recipes?sub=Pishiriqlar" onClick={closeMenu}>Pishiriqlar</Link></li>
+                    <li><Link to="/all-recipes?sub=Tortlar" onClick={closeMenu}>Tortlar</Link></li>
+                    <li><Link to="/all-recipes?sub=Muzqaymoq" onClick={closeMenu}>Muzqaymoqlar</Link></li>
+                  </ul>
+                </li>
               </ul>
             </li>
 
@@ -111,12 +124,16 @@ const Navbar = () => {
 
           {user ? (
             <div className="user-menu">
-              <Link to="/profile" className="profile-link" onClick={closeMenu}>
+              <Link to={localStorage.getItem("isAdmin") === "true" ? "/admin" : "/profile"} className="profile-link" onClick={closeMenu}>
                 <div className="avatar">
-                  {user.avatar ? <img src={user.avatar} className="nav-avatar-img" alt="U" /> : user.username.charAt(0).toUpperCase()}
+                  {user.avatar ? (
+                    <img src={user.avatar} className="nav-avatar-img" alt="U" />
+                  ) : (
+                    <span>{getInitial()}</span>
+                  )}
                 </div>
               </Link>
-              <button className="logout-btn" onClick={logout}>{t("logout")}</button>
+              <button className="logout-btn" onClick={handleLogout}>{t("logout")}</button>
             </div>
           ) : (
             <Link to="/login" onClick={closeMenu}>

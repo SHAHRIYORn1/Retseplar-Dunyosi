@@ -1,0 +1,822 @@
+/* --- ADMIN PAGE ASOSIY --- */
+.adminPage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.mainContent {
+  padding: 30px 0;
+  min-height: calc(100vh - 80px);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- HEADER --- */
+.adminHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 25px 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+.adminHeader h1 {
+  font-size: 28px;
+  color: #1a202c;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.logoutBtn {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+.logoutBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+  background: linear-gradient(135deg, #ff5252 0%, #e63946 100%);
+}
+
+.logoutBtn:active {
+  transform: translateY(0);
+}
+
+/* --- STATS CARDS --- */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.statCard {
+  background: white;
+  padding: 30px 25px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  border-bottom: 5px solid #00b894;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.statCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 184, 148, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 184, 148, 0.15);
+  border-bottom-color: #00a87a;
+}
+
+.statCard:hover::before {
+  left: 100%;
+}
+
+.statCard h3 {
+  font-size: 42px;
+  font-weight: 800;
+  margin: 0;
+  color: #00b894;
+  letter-spacing: -1px;
+}
+
+.statCard p {
+  color: #718096;
+  margin: 8px 0 0;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+/* --- TABLE SECTION --- */
+.tableCard {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+}
+
+.tableHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.tableHeader h2 {
+  font-size: 22px;
+  color: #1a202c;
+  font-weight: 700;
+  margin: 0;
+}
+
+.addBtn {
+  background: linear-gradient(135deg, #0984e3 0%, #1a5490 100%);
+  color: white;
+  border: none;
+  padding: 13px 28px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(9, 132, 227, 0.3);
+  white-space: nowrap;
+}
+
+.addBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(9, 132, 227, 0.4);
+  background: linear-gradient(135deg, #0770c9 0%, #164680 100%);
+}
+
+.addBtn:active {
+  transform: translateY(0);
+}
+
+/* --- TABLE STYLES --- */
+.adminTable {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+.adminTable th {
+  padding: 15px 20px;
+  color: #718096;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  background: #f8f9fa;
+  border-radius: 10px 10px 0 0;
+}
+
+.adminTable tbody tr {
+  background: #ffffff;
+  transition: all 0.2s ease;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.adminTable tbody tr:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+  border-color: #00b894;
+}
+
+.adminTable td {
+  padding: 18px 20px;
+  color: #2d3748;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.adminTable td:first-child {
+  border-radius: 10px 0 0 10px;
+  font-weight: 600;
+}
+
+.adminTable td:last-child {
+  border-radius: 0 10px 10px 0;
+}
+
+.rowImg {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* --- ACTION BUTTONS --- */
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.editBtn,
+.deleteBtn {
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.editBtn {
+  background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+  color: #d63031;
+  box-shadow: 0 2px 8px rgba(253, 203, 110, 0.3);
+}
+
+.editBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(253, 203, 110, 0.4);
+  background: linear-gradient(135deg, #ffd89b 0%, #fcb045 100%);
+}
+
+.editBtn:active {
+  transform: scale(0.95);
+}
+
+.deleteBtn {
+  background: linear-gradient(135deg, #fab1a0 0%, #ff7675 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(255, 118, 117, 0.3);
+}
+
+.deleteBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(255, 118, 117, 0.4);
+  background: linear-gradient(135deg, #fa9484 0%, #ff5252 100%);
+}
+
+.deleteBtn:active {
+  transform: scale(0.95);
+}
+
+/* --- MODAL DESIGN --- */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(26, 32, 44, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeInOverlay 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 20px;
+}
+
+.modalContent {
+  background: white;
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+  border-radius: 20px;
+  padding: 40px;
+  position: relative;
+  overflow-y: auto;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modalContent h3 {
+  font-size: 26px;
+  color: #1a202c;
+  margin: 0 0 30px;
+  text-align: center;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+/* --- FORM GROUPS --- */
+.formGroup {
+  margin-bottom: 25px;
+}
+
+.formGroup label {
+  display: block;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 10px;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background: #ffffff;
+  color: #2d3748;
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: #a0aec0;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  border-color: #00b894;
+  outline: none;
+  background: #f0fef9;
+  box-shadow: 0 0 0 4px rgba(0, 184, 148, 0.1);
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 100px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* --- FORM ROW --- */
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* --- DYNAMIC SECTIONS --- */
+.dynamicSection {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  border: 2px dashed #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+.dynamicSection label {
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 15px;
+  display: block;
+  font-size: 14px;
+}
+
+.dynamicRow {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  align-items: flex-start;
+}
+
+.dynamicRow input,
+.dynamicRow textarea {
+  flex: 1;
+  background: white;
+  padding: 12px 14px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.dynamicRow input:focus,
+.dynamicRow textarea:focus {
+  border-color: #00b894;
+  background: #f0fef9;
+  box-shadow: 0 0 0 3px rgba(0, 184, 148, 0.08);
+}
+
+.dynamicRow button {
+  background: linear-gradient(135deg, #ff7675 0%, #d63031 100%);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-top: 2px;
+  box-shadow: 0 2px 8px rgba(255, 118, 117, 0.2);
+}
+
+.dynamicRow button:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 12px rgba(255, 118, 117, 0.3);
+  background: linear-gradient(135deg, #ff5252 0%, #c92a2a 100%);
+}
+
+.dynamicRow button:active {
+  transform: scale(0.95);
+}
+
+.addSmallBtn {
+  background: white;
+  border: 2px dashed #00b894;
+  color: #00b894;
+  padding: 12px 16px;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  margin-top: 10px;
+  font-size: 14px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.3px;
+}
+
+.addSmallBtn:hover {
+  background: #00b894;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 184, 148, 0.3);
+}
+
+.addSmallBtn:active {
+  transform: translateY(0);
+}
+
+/* --- MODAL ACTION BUTTONS --- */
+.modalActions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 35px;
+  padding-top: 25px;
+  border-top: 2px solid #e2e8f0;
+}
+
+.saveBtn {
+  background: linear-gradient(135deg, #00b894 0%, #00a87a 100%);
+  color: white;
+  border: none;
+  padding: 15px 24px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 184, 148, 0.3);
+  letter-spacing: 0.5px;
+}
+
+.saveBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 184, 148, 0.4);
+  background: linear-gradient(135deg, #00a87a 0%, #009663 100%);
+}
+
+.saveBtn:active {
+  transform: translateY(-1px);
+}
+
+.cancelBtn {
+  background: #e2e8f0;
+  color: #4a5568;
+  border: none;
+  padding: 15px 24px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.5px;
+}
+
+.cancelBtn:hover {
+  background: #cbd5e0;
+  color: #2d3748;
+  transform: translateY(-2px);
+}
+
+.cancelBtn:active {
+  transform: translateY(0);
+}
+
+/* --- EDIT FORM SCROLL --- */
+.editFormScroll {
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- SCROLLBAR STYLING --- */
+.modalContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modalContent::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+.modalContent::-webkit-scrollbar-thumb {
+  background: #cbd5e0;
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.modalContent::-webkit-scrollbar-thumb:hover {
+  background: #a0aec0;
+}
+
+/* --- ANIMATIONS --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInOverlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 768px) {
+  .adminHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .adminHeader h1 {
+    font-size: 22px;
+  }
+
+  .logoutBtn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .tableHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .addBtn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .statCard {
+    padding: 20px 15px;
+  }
+
+  .statCard h3 {
+    font-size: 32px;
+  }
+
+  .tableCard {
+    padding: 15px;
+  }
+
+  .adminTable {
+    font-size: 13px;
+  }
+
+  .adminTable th {
+    padding: 12px 10px;
+    font-size: 11px;
+  }
+
+  .adminTable td {
+    padding: 12px 10px;
+    font-size: 13px;
+  }
+
+  .actions {
+    gap: 8px;
+  }
+
+  .editBtn,
+  .deleteBtn {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .modalContent {
+    width: 95%;
+    padding: 25px;
+    max-height: 95vh;
+  }
+
+  .modalContent h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .formGroup {
+    margin-bottom: 18px;
+  }
+
+  .modalActions {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 25px;
+  }
+
+  .saveBtn,
+  .cancelBtn {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  .dynamicSection {
+    padding: 15px;
+  }
+
+  .dynamicRow {
+    gap: 8px;
+  }
+
+  .dynamicRow input,
+  .dynamicRow textarea {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .addSmallBtn {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .container {
+    padding: 0 15px;
+  }
+
+  .mainContent {
+    padding: 15px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .adminHeader {
+    padding: 15px;
+  }
+
+  .adminHeader h1 {
+    font-size: 18px;
+  }
+
+  .logoutBtn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .statsGrid {
+    gap: 12px;
+  }
+
+  .statCard {
+    padding: 15px 12px;
+  }
+
+  .statCard h3 {
+    font-size: 28px;
+  }
+
+  .statCard p {
+    font-size: 12px;
+  }
+
+  .tableCard {
+    padding: 12px;
+  }
+
+  .tableHeader h2 {
+    font-size: 18px;
+  }
+
+  .addBtn {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .adminTable {
+    font-size: 12px;
+  }
+
+  .adminTable th {
+    padding: 10px 8px;
+    font-size: 10px;
+  }
+
+  .adminTable td {
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+
+  .actions {
+    gap: 6px;
+  }
+
+  .editBtn,
+  .deleteBtn {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .modalContent {
+    width: 98%;
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  .modalContent h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .formGroup input,
+  .formGroup select,
+  .formGroup textarea {
+    padding: 12px 12px;
+    font-size: 14px;
+  }
+
+  .dynamicSection {
+    padding: 12px;
+  }
+
+  .dynamicRow button {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+
+  .saveBtn,
+  .cancelBtn {
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+
+  .container {
+    padding: 0 12px;
+  }
+}
