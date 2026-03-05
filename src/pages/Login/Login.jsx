@@ -13,6 +13,18 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // 1. ADMIN TEKSHIRUVI
+    if (formData.email === "admin@gmail.com" && formData.password === "admin123456") {
+      localStorage.setItem("isAdmin", "true"); // Admin ekanini belgilash
+      // Admin uchun ham vaqtincha user obyekti yaratamiz (Navbar buzilmasligi uchun)
+      const adminUser = { fullName: "Administrator", email: "admin@gmail.com", role: "admin" };
+      login(adminUser);
+      navigate("/admin");
+      return;
+    }
+
+    // 2. ODDIY FOYDALANUVCHI TEKSHIRUVI
     const registeredUser = JSON.parse(localStorage.getItem("registeredUser"));
 
     if (
@@ -20,6 +32,7 @@ const Login = () => {
       formData.email === registeredUser.email &&
       formData.password === registeredUser.password
     ) {
+      localStorage.removeItem("isAdmin"); // Admin emasligini aniqlashtirish
       login(registeredUser); 
       navigate("/"); 
     } else {
@@ -38,6 +51,7 @@ const Login = () => {
           <input 
             type="email" 
             placeholder="example@mail.com"
+            value={formData.email}
             onChange={(e) => setFormData({...formData, email: e.target.value})} 
             required 
           />
@@ -49,6 +63,7 @@ const Login = () => {
             <input 
               type={showPassword ? "text" : "password"}
               placeholder="Parolni kiriting"
+              value={formData.password}
               onChange={(e) => setFormData({...formData, password: e.target.value})} 
               required 
             />

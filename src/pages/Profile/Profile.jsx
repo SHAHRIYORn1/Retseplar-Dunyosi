@@ -175,25 +175,6 @@ const Profile = () => {
           )}
         </section>
 
-        <h3 className={styles.title}>
-          Mening retseptlarim ({myRecipes.length})
-        </h3>
-        <div className={styles.recipesGrid}>
-          {myRecipes.map((recipe) => (
-            <div key={recipe.id} className={styles.recipeCard}>
-              <img src={recipe.imageName} alt="" />
-              <div className={styles.recipeContent}>
-                <h4>{recipe.title}</h4>
-                <button
-                  onClick={() => handleDelete(recipe.id)}
-                  className={styles.delBtn}
-                >
-                  O'chirish
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   );

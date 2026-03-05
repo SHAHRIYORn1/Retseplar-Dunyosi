@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Navbar from "../components/Navbar/Navbar.jsx";
-import RecipeCard from "../components/RecipeCard/RecipeCard.jsx"; // Tayyor komponentingiz
+import RecipeCard from "../components/RecipeCard/RecipeCard.jsx";
 import recipesData from "../toamlar.json"; 
 
 const AllRecipes = () => {
@@ -14,10 +14,25 @@ const AllRecipes = () => {
   const subParam = searchParams.get("sub");
 
   useEffect(() => {
-    let result = recipesData;
-    if (catParam) result = result.filter(r => r.category === catParam);
-    if (subParam) result = result.filter(r => r.subCategory === subParam);
-    setFilteredRecipes(result);
+    // 1. JSON fayldagi statik retseptlar
+    const staticRecipes = recipesData;
+
+    // 2. LocalStorage dagi yangi qo'shilgan retseptlar
+    const localRecipes = JSON.parse(localStorage.getItem("allRecipes")) || [];
+
+    // 3. Ikkala manbani birlashtiramiz
+    // Yangi qo'shilganlar birinchi ko'rinishi uchun localRecipes-ni boshiga qo'yamiz
+    let allCombined = [...localRecipes, ...staticRecipes];
+
+    // 4. Filtrlash logikasi
+    if (catParam) {
+      allCombined = allCombined.filter(r => r.category === catParam);
+    }
+    if (subParam) {
+      allCombined = allCombined.filter(r => r.subCategory === subParam);
+    }
+
+    setFilteredRecipes(allCombined);
   }, [catParam, subParam]);
 
   const getPageTitle = () => {
@@ -46,7 +61,6 @@ const AllRecipes = () => {
         }}>
           {filteredRecipes.length > 0 ? (
             filteredRecipes.map((recipe) => (
-              /* SIZNING TAYYOR KOMPONENTINGIZ */
               <RecipeCard key={recipe.id} taom={recipe} />
             ))
           ) : (
